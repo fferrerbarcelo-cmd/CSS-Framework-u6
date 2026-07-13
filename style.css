@@ -14,11 +14,16 @@ header {
   object-fit: cover;
   border: 4px solid #ffffff;
 }
+}
 
 /* Imágenes del portfolio con bordes redondeados y efecto hover */
 .proyecto-img {
   border-radius: 12px;
   transition: transform 0.3s ease;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
 }
 
 .proyecto-img:hover {
