@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="preloader" id="preloader"><span>FF<b>.</b></span></div>
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-outline" aria-hidden="true"></div>
+  <div class="mouse-light" aria-hidden="true"></div>
 
   <nav class="navbar navbar-expand-lg fixed-top site-navbar">
     <div class="container">
@@ -28,9 +30,17 @@
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
           <li class="nav-item"><a class="nav-link" href="#acerca-de-mi">Sobre mí</a></li>
-          <li class="nav-item"><a class="nav-link" href="#juego">Mini juego</a></li>
+          <li class="nav-item"><a class="nav-link" href="#juego">Juegos</a></li>
           <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-          <li class="nav-item ms-lg-2">
+          <li class="nav-item ms-lg-2 d-flex align-items-center gap-2 flex-wrap">
+            <span class="accent-picker" role="group" aria-label="Color de acento">
+              <button class="dot on" type="button" data-accent="" style="--c:#8b7cff" aria-label="Violeta"></button>
+              <button class="dot" type="button" data-accent="#22b573" style="--c:#22b573" aria-label="Verde"></button>
+              <button class="dot" type="button" data-accent="#f97316" style="--c:#f97316" aria-label="Naranja"></button>
+              <button class="dot" type="button" data-accent="#ec4899" style="--c:#ec4899" aria-label="Rosa"></button>
+            </span>
+            <button class="theme-toggle" id="langToggle" type="button" aria-label="Cambiar idioma">EN</button>
+            <button class="theme-toggle" id="openPalette" type="button" aria-label="Comandos (Ctrl+K)"><i class="bi bi-command"></i></button>
             <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo claro" title="Cambiar tema">
               <i class="bi bi-sun-fill" id="themeIcon" aria-hidden="true"></i>
               <span class="theme-label">Modo claro</span>
@@ -51,7 +61,7 @@
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Jiw9zpg5FwUN_3uqC6fsG9pbE2RpYDPCnNSay6wt2Q&s=10"
           alt="Foto de perfil de Felipe" class="profile-image">
       </div>
-      <p class="eyebrow">HOLA, SOY</p>
+      <p class="eyebrow" id="greeting">HOLA, SOY</p>
       <h1>Felipe Ferrer <span>Barceló</span></h1>
       <p class="typed-line"><span id="typed"></span><span class="caret" aria-hidden="true"></span></p>
       <p class="hero-description">Estudiante, creador digital y futuro estudiante de Ciencias Políticas y Relaciones Internacionales.</p>
@@ -64,6 +74,7 @@
   </header>
 
   <main>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>Responsive</span><span>Curiosidad</span></div></div>
     <section id="portfolio" class="section-space">
       <div class="container">
         <div class="section-heading">
@@ -72,6 +83,12 @@
           <p>Una selección de trabajos y prácticas que fui desarrollando mientras aprendo programación web.</p>
         </div>
 
+        <div class="filters" id="filters">
+          <button class="chip active" data-filter="all" data-en="All">Todos</button>
+          <button class="chip" data-filter="html">HTML · CSS</button>
+          <button class="chip" data-filter="bootstrap">Bootstrap</button>
+          <button class="chip" data-filter="js">JavaScript</button>
+        </div>
         <div class="row g-4">
           <div class="col-md-6 col-lg-4">
             <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/app-boca-juniors/" target="_blank" rel="noopener noreferrer">
@@ -168,8 +185,28 @@
               <div><strong data-count="4">0</strong><span>tecnologías</span></div>
               <div><strong data-count="2027">0</strong><span>arranco la uni</span></div>
             </div>
+            <div class="skill-bars">
+              <div><span>HTML</span><i style="--v:80%"></i></div>
+              <div><span>CSS</span><i style="--v:70%"></i></div>
+              <div><span>Bootstrap</span><i style="--v:65%"></i></div>
+              <div><span>JavaScript</span><i style="--v:55%"></i></div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="camino" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="MY PATH">MI CAMINO</p>
+          <h2>Un paso <span>a la vez</span></h2>
+        </div>
+        <ol class="timeline">
+          <li><time data-en="NOW">AHORA</time><h3 data-en="Student at St Brendan's">Estudiante en St Brendan's</h3><p data-en="I'm learning HTML, CSS and Bootstrap to build responsive sites.">Aprendo HTML, CSS y Bootstrap para crear sitios responsive.</p></li>
+          <li><time>2026</time><h3 data-en="My first projects">Mis primeros proyectos</h3><p data-en="I build this portfolio and keep adding work throughout the year.">Armo este portfolio y voy sumando trabajos durante el año.</p></li>
+          <li><time>2027</time><h3 data-en="University begins">Arranca la universidad</h3><p data-en="Political Science and International Relations.">Ciencias Políticas y Relaciones Internacionales.</p></li>
+        </ol>
       </div>
     </section>
 
@@ -177,10 +214,17 @@
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">UN PEQUEÑO EXTRA</p>
-          <h2>Mini juego: <span>adiviná el número</span></h2>
-          <p>Estoy pensando un número del 1 al 20. ¿Podés encontrarlo?</p>
+          <h2>Mini <span>juegos</span></h2>
+          <p>Elegí un juego, batí tu récord y mostrame de qué sos capaz.</p>
         </div>
         <div class="game-panel">
+          <div class="game-tabs">
+            <button class="chip active" type="button" data-pane="guess" data-en="Guess">Adivinar</button>
+            <button class="chip" type="button" data-pane="memory" data-en="Memory">Memoria</button>
+            <button class="chip" type="button" data-pane="snake">Snake</button>
+            <button class="chip" type="button" data-pane="quiz">Quiz</button>
+          </div>
+          <div class="pane" id="pane-guess">
           <div class="game-icon"><i class="bi bi-dice-5"></i></div>
           <p id="gameMessage" class="game-message" aria-live="polite">Elegí un número entre 1 y 20 para empezar.</p>
           <form id="guessForm" class="guess-form">
@@ -191,6 +235,26 @@
           <div class="range-bar" aria-label="Rango posible"><span id="rangeLow">1</span><div class="range-track"><div id="rangeFill"></div></div><span id="rangeHigh">20</span></div>
           <p class="attempts mt-3">Intentos: <strong id="attemptCount">0</strong> · Récord: <strong id="bestScore">–</strong></p>
           <button class="game-reset" id="resetGame" type="button"><i class="bi bi-arrow-clockwise"></i> Nuevo número</button>
+          </div>
+          <div class="pane" id="pane-memory" hidden>
+            <p class="game-message" data-en="Find all the pairs.">Encontrá todos los pares.</p>
+            <div class="mem-grid" id="memGrid"></div>
+            <p class="attempts"><span data-en="Moves:">Movimientos:</span> <strong id="memMoves">0</strong></p>
+            <button class="game-reset" id="memReset" type="button" data-en="New game">Nueva partida</button>
+          </div>
+          <div class="pane" id="pane-snake" hidden>
+            <p class="game-message" id="snakeInfo" data-en="Arrow keys or swipe. Press Start.">Flechas del teclado o deslizá. Tocá Empezar.</p>
+            <canvas id="snakeCv" class="snake-cv" width="300" height="300"></canvas>
+            <p class="attempts mt-3"><span data-en="Score:">Puntos:</span> <strong id="snakeScore">0</strong></p>
+            <button class="game-reset" id="snakeStart" type="button" data-en="Start">Empezar</button>
+          </div>
+          <div class="pane" id="pane-quiz" hidden>
+            <p class="game-message" id="quizQ"></p>
+            <div class="quiz-opts" id="quizOpts"></div>
+            <p class="attempts"><span data-en="Score:">Puntos:</span> <strong id="quizScore">0</strong>/8</p>
+            <button class="game-reset" id="quizReset" type="button" data-en="Restart">Reiniciar</button>
+          </div>
+          <p class="records" id="records"></p>
         </div>
       </div>
     </section>
@@ -238,6 +302,21 @@
       <p class="footer-copy mb-0">© <span id="currentYear">2026</span> · Hecho con HTML, CSS y JavaScript.</p>
     </div>
   </footer>
+
+  <dialog id="projectModal" class="project-modal">
+    <div class="pm-img"><img alt=""></div>
+    <div class="pm-body">
+      <span class="project-type"></span><h3></h3><p></p>
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer" data-en="Open project">Abrir proyecto</a>
+        <button class="btn btn-outline-custom" type="button" data-close data-en="Close">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="palette" class="palette">
+    <input id="palInput" type="text" autocomplete="off" placeholder="Escribí un comando..." aria-label="Comandos">
+    <ul id="palList"></ul>
+  </dialog>
 
   <button id="backToTop" class="back-to-top" type="button" aria-label="Volver arriba"><i class="bi bi-arrow-up"></i></button>
 
