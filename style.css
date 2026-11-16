@@ -1,11 +1,78 @@
-/* Espacio para que el contenido no quede tapado por el navbar fijo */
-body {
-  padding-top: 56px;
+
+/* =====================================
+   CONFIGURACIÓN GENERAL
+===================================== */
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-/* Encabezado */
+body {
+  padding-top: 56px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #212529;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+.navbar {
+  transition: background-color 0.4s ease;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-3px);
+  color: #adb5bd !important;
+}
+
+.theme-toggle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* =====================================
+   ENCABEZADO
+===================================== */
+
 header {
   padding: 60px 0;
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+
+header h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+header .lead {
+  opacity: 0.85;
 }
 
 .foto-perfil {
@@ -13,22 +80,283 @@ header {
   height: 180px;
   object-fit: cover;
   border: 4px solid #ffffff;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Imágenes del portfolio: mismo tamaño + efecto hover */
+.foto-perfil:hover {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+}
+
+/* =====================================
+   PORTFOLIO
+===================================== */
+
+#portfolio {
+  position: relative;
+  z-index: 1;
+}
+
+#portfolio h2,
+#acerca-de-mi h2,
+#contacto h2 {
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.project-card {
+  height: 100%;
+  text-align: center;
+  padding: 12px;
+  border-radius: 15px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
 .proyecto-img {
-  width: 100%; !important;
-  height: 250px; !important;
-  object-fit: cover; !important;
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.proyecto-img:hover {
-  transform: scale(1.08);
+.project-card:hover .proyecto-img {
+  transform: scale(1.035);
+  filter: brightness(1.08);
 }
 
-/* Footer */
+.project-card p {
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+/* =====================================
+   ACERCA DE MÍ
+===================================== */
+
+#acerca-de-mi {
+  transition: background-color 0.4s ease;
+}
+
+#acerca-de-mi p {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* =====================================
+   CONTACTO
+===================================== */
+
+#contacto form {
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #f8f9fa;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+  transition: background-color 0.4s ease;
+}
+
+.form-control {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #6c757d;
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.2);
+}
+
+#contacto button {
+  padding: 10px 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contacto button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+  position: relative;
+  z-index: 2;
+}
+
 footer i {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer a:hover i {
+  transform: translateY(-5px) scale(1.2);
+  color: #adb5bd;
+}
+
+/* =====================================
+   ANIMACIONES AL HACER SCROLL
+===================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================
+   MODO OSCURO
+===================================== */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode #portfolio {
+  background-color: #121212;
+}
+
+body.dark-mode #acerca-de-mi {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1;
+}
+
+body.dark-mode #contacto {
+  background-color: #121212;
+}
+
+body.dark-mode #contacto form {
+  background-color: #242424;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .form-control {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #555555;
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #aaaaaa;
+}
+
+body.dark-mode .form-label {
+  color: #f1f1f1;
+}
+
+body.dark-mode .project-card:hover {
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .project-card p {
+  color: #f1f1f1;
+}
+
+body.dark-mode .navbar {
+  background-color: #080808 !important;
+}
+
+/* =====================================
+   CURSOR PERSONALIZADO
+===================================== */
+
+.custom-cursor {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #777777;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: width 0.2s ease, height 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background-color: #777777;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+.custom-cursor.hover {
+  width: 55px;
+  height: 55px;
+  background-color: rgba(120, 120, 120, 0.1);
+}
+
+/* =====================================
+   PARTÍCULAS
+===================================== */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* =====================================
+   CELULARES Y TABLETS
+===================================== */
+
+@media (max-width: 768px) {
+  .custom-cursor,
+  .cursor-dot {
+    display: none;
+  }
+
+  .proyecto-img {
+    height: 220px !important;
+  }
+
+  header {
+    min-height: 350px;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  #particles {
+    opacity: 0.2;
+  }
+}
+
+/* =====================================
+   ACCESIBILIDAD
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
