@@ -1,387 +1,477 @@
-/* =========================
-   PORTFOLIO - ESTILOS
-   ========================= */
-:root {
-  color-scheme: dark;
-  --bg: #101522;
-  --bg-soft: #151d2d;
-  --surface: #1a2436;
-  --surface-2: #202c40;
-  --text: #f3f5fa;
-  --muted: #aab5c8;
-  --line: rgba(255,255,255,.10);
-  --accent: #8b7cff;
-  --accent-2: #52d6c7;
-  --nav-bg: rgba(16,21,34,.82);
-  --shadow: 0 18px 55px rgba(0,0,0,.22);
-}
-:root[data-theme="light"] {
-  color-scheme: light;
-  --bg: #f6f7fb;
-  --bg-soft: #edf0f7;
-  --surface: #ffffff;
-  --surface-2: #f0f2f8;
-  --text: #182033;
-  --muted: #657087;
-  --line: rgba(24,32,51,.12);
-  --accent: #6254db;
-  --accent-2: #087f79;
-  --nav-bg: rgba(255,255,255,.86);
-  --shadow: 0 18px 55px rgba(37,47,75,.10);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-body {
-  margin: 0;
-  padding-top: 70px;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  transition: background .25s ease, color .25s ease;
-}
-a { color: inherit; text-decoration: none; }
-button, a, input, textarea { font: inherit; }
-::selection { background: var(--accent); color: white; }
-.site-navbar {
-  background: var(--nav-bg);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-.navbar-brand { color: var(--text); font-size: 1.4rem; letter-spacing: -.06em; }
-.navbar-brand span, .footer-brand span { color: var(--accent); }
-.nav-link { color: var(--muted); font-size: .92rem; transition: color .2s ease; }
-.nav-link:hover, .nav-link:focus { color: var(--text); }
-.navbar-toggler { border-color: var(--line); }
-.navbar-toggler:focus { box-shadow: 0 0 0 .2rem rgba(139,124,255,.2); }
-.theme-toggle {
-  display: inline-flex; align-items: center; gap: .55rem;
-  border: 1px solid var(--line); border-radius: 999px;
-  padding: .48rem .85rem; background: var(--surface); color: var(--text);
-  font-size: .84rem; transition: transform .2s ease, border-color .2s ease;
-}
-.theme-toggle:hover { transform: translateY(-2px); border-color: var(--accent); }
-.theme-toggle i { color: var(--accent); }
-.hero-section {
-  min-height: 690px; position: relative; overflow: hidden;
-  display: flex; align-items: center; background: var(--bg);
-}
-.hero-content { position: relative; z-index: 1; padding-top: 65px; padding-bottom: 65px; }
-.hero-glow { position: absolute; width: 430px; height: 430px; border-radius: 50%; filter: blur(100px); opacity: .22; pointer-events: none; }
-.hero-glow-one { background: var(--accent); top: -190px; left: -100px; }
-.hero-glow-two { background: var(--accent-2); right: -150px; bottom: -220px; }
-.profile-frame {
-  width: 154px; height: 154px; margin: 0 auto 1.8rem; padding: 5px;
-  border-radius: 50%; background: linear-gradient(135deg,var(--accent),var(--accent-2));
-  box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 10%, transparent);
-}
-.profile-image { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--bg); }
-.eyebrow { color: var(--accent-2); font-size: .72rem; font-weight: 800; letter-spacing: .2em; margin-bottom: .8rem; }
-.hero-section h1 { font-size: clamp(2.6rem,7vw,5.2rem); font-weight: 850; letter-spacing: -.065em; line-height: 1.03; margin-bottom: 1.2rem; }
-.hero-section h1 span, .section-heading h2 span, .about-card h2 span { color: var(--accent); }
-.hero-description { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(1rem,2vw,1.18rem); line-height: 1.8; }
-.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 2rem; }
-.btn-primary-custom, .btn-outline-custom {
-  border-radius: 999px; padding: .85rem 1.35rem; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-}
-.btn-primary-custom { color: #fff; background: linear-gradient(110deg,var(--accent),#7063ed); border: 0; box-shadow: 0 9px 25px rgba(111,99,237,.25); }
-.btn-primary-custom:hover { color: #fff; transform: translateY(-3px); box-shadow: 0 13px 30px rgba(111,99,237,.35); }
-.btn-outline-custom { border: 1px solid var(--line); color: var(--text); }
-.btn-outline-custom:hover { border-color: var(--accent); color: var(--text); transform: translateY(-3px); }
-.scroll-note { display: flex; justify-content: center; align-items: center; gap: .7rem; margin-top: 4rem; color: var(--muted); font-size: .62rem; letter-spacing: .2em; }
-.scroll-note span { width: 27px; height: 1px; background: var(--accent-2); }
-.section-space { padding: 105px 0; }
-.section-heading { max-width: 700px; margin: 0 auto 3.2rem; text-align: center; }
-.section-heading h2 { font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 850; letter-spacing: -.06em; margin-bottom: .8rem; }
-.section-heading > p:last-child { color: var(--muted); line-height: 1.75; }
-.project-card { display: block; height: 100%; overflow: hidden; border-radius: 19px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); transition: transform .25s ease, border-color .25s ease; }
-.project-card:hover { transform: translateY(-7px); border-color: color-mix(in srgb,var(--accent) 65%,var(--line)); }
-.project-image-wrap { position: relative; height: 225px; overflow: hidden; background: var(--surface-2); }
-.project-image { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.project-card:hover .project-image { transform: scale(1.06); }
-.project-number { position: absolute; top: 14px; left: 15px; padding: .35rem .6rem; border-radius: 7px; color: white; background: rgba(12,17,29,.7); font-size: .72rem; font-weight: 800; }
-.project-open { position: absolute; right: 14px; bottom: 14px; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #fff; background: var(--accent); }
-.project-info { padding: 1.35rem 1.4rem 1.5rem; }
-.project-type { color: var(--accent-2); font-size: .65rem; font-weight: 800; letter-spacing: .15em; }
-.project-info h3 { margin: .5rem 0 .35rem; font-size: 1.18rem; font-weight: 750; }
-.project-info p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
-.about-section { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.about-card { min-height: 330px; padding: 2.5rem; border-radius: 24px; background: linear-gradient(145deg,var(--surface),var(--surface-2)); border: 1px solid var(--line); box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
-.about-mark { position: absolute; top: 5px; right: 20px; font-size: 9rem; line-height: 1; font-weight: 900; letter-spacing: -.12em; color: color-mix(in srgb,var(--accent) 13%,transparent); }
-.about-card .eyebrow, .about-card h2 { position: relative; }
-.about-card h2 { font-size: clamp(2rem,4vw,3.2rem); font-weight: 850; letter-spacing: -.06em; }
-.about-copy { color: var(--muted); font-size: 1.04rem; line-height: 1.9; }
-.skill-list { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
-.skill-list span { padding: .55rem .85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--text); background: var(--surface); font-size: .82rem; }
-.game-section { background: var(--bg); }
-.game-panel { max-width: 610px; margin: auto; padding: 2.5rem; text-align: center; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: var(--shadow); }
-.game-icon { display: grid; place-items: center; width: 65px; height: 65px; margin: 0 auto 1rem; border-radius: 20px; color: var(--accent); background: color-mix(in srgb,var(--accent) 13%,transparent); font-size: 1.8rem; }
-.game-message { min-height: 3rem; color: var(--muted); line-height: 1.6; }
-.guess-form { display: flex; gap: .7rem; justify-content: center; margin: 1.3rem 0; }
-.guess-form input { width: 130px; border: 1px solid var(--line); border-radius: 999px; padding: .75rem 1rem; text-align: center; color: var(--text); background: var(--bg); outline: none; }
-.guess-form input:focus, .custom-input:focus { border-color: var(--accent); box-shadow: 0 0 0 .2rem color-mix(in srgb,var(--accent) 18%,transparent); }
-.attempts { color: var(--muted); font-size: .9rem; }
-.attempts strong { color: var(--text); }
-.game-reset { border: 0; background: none; color: var(--accent); font-weight: 700; font-size: .9rem; }
-.contact-section { background: var(--bg-soft); border-top: 1px solid var(--line); }
-.contact-panel { max-width: 800px; margin: auto; padding: 2.2rem; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: var(--shadow); }
-.form-label { color: var(--text); font-weight: 650; font-size: .9rem; }
-.custom-input { border: 1px solid var(--line); border-radius: 12px; padding: .8rem 1rem; color: var(--text); background: var(--bg); }
-.custom-input::placeholder { color: var(--muted); opacity: .7; }
-.custom-input:focus { color: var(--text); background: var(--bg); }
-.site-footer { padding: 2rem 0; border-top: 1px solid var(--line); background: var(--bg); }
-.footer-brand { color: var(--text); font-weight: 800; }
-.social-links { display: flex; gap: 1.1rem; }
-.social-links a { color: var(--muted); font-size: 1.1rem; transition: color .2s ease, transform .2s ease; }
-.social-links a:hover { color: var(--accent); transform: translateY(-3px); }
-.footer-copy { color: var(--muted); font-size: .78rem; }
-.back-to-top { position: fixed; right: 22px; bottom: 22px; z-index: 20; width: 43px; height: 43px; border: 1px solid var(--line); border-radius: 50%; color: #fff; background: var(--accent); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(10px); transition: .2s ease; }
-.back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-/* Cursor personalizado: solo en dispositivos con mouse/trackpad */
-.cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; z-index: 2000; pointer-events: none; border-radius: 50%; opacity: 0; transform: translate(-50%,-50%); }
-.cursor-dot { width: 7px; height: 7px; background: var(--accent-2); }
-.cursor-outline { width: 32px; height: 32px; border: 1px solid var(--accent); transition: width .18s ease,height .18s ease,background .18s ease; }
-body.cursor-active, body.cursor-active a, body.cursor-active button { cursor: none; }
-.cursor-outline.cursor-hover { width: 48px; height: 48px; background: color-mix(in srgb,var(--accent) 13%,transparent); }
-@media (pointer:fine) { .cursor-dot, .cursor-outline { opacity: 1; } }
-@media (pointer:coarse) { .cursor-dot, .cursor-outline { display: none; } }
-@media (max-width: 767px) {
-  .hero-section { min-height: 620px; }
-  .section-space { padding: 75px 0; }
-  .project-image-wrap { height: 210px; }
-  .game-panel, .contact-panel { padding: 1.5rem; }
-  .footer-copy { text-align: center; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio personal de Felipe Ferrer Barceló: proyectos web, aprendizaje y contacto.">
+  <meta name="theme-color" content="#101522">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Felipe Ferrer Barceló | Portfolio">
+  <meta property="og:description" content="Portfolio personal: proyectos web, aprendizaje, juegos y una iniciativa solidaria para escuelas rurales.">
+  <meta property="og:image" content="preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101522'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='28' font-weight='900' text-anchor='middle' fill='%238b7cff'%3EFF%3C/text%3E%3C/svg%3E">
+  <title>Felipe Ferrer Barceló | Portfolio</title>
 
-/* ================= EXTRAS ================= */
-.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1100; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg,var(--accent),var(--accent-2)); }
-.site-navbar { transition: box-shadow .3s ease; }
-.site-navbar.scrolled { box-shadow: var(--shadow); }
-.nav-link { position: relative; }
-.nav-link::after { content: ""; position: absolute; left: .5rem; right: .5rem; bottom: 2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transition: transform .25s ease; }
-.nav-link.active { color: var(--text); }
-.nav-link.active::after { transform: scaleX(1); }
-.theme-toggle i { transition: transform .5s ease; }
-.theme-toggle:hover i { transform: rotate(180deg); }
-.particles { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-@keyframes float { 50% { transform: translateY(-10px); } }
-@keyframes gradientMove { to { background-position: 200% center; } }
-@keyframes blink { 50% { opacity: 0; } }
-@keyframes glowPulse { 50% { opacity: .34; transform: scale(1.15); } }
-@keyframes ripple { to { width: 80px; height: 80px; opacity: 0; } }
-.hero-content > * { animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 110ms); }
-.profile-frame { animation: fadeUp .8s both, float 5s ease-in-out 1s infinite; }
-.hero-glow { animation: glowPulse 7s ease-in-out infinite; }
-.hero-section h1 span { background: linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent)); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientMove 5s linear infinite; }
-.typed-line { min-height: 1.9rem; margin-bottom: .6rem; font-size: clamp(1.1rem,2.4vw,1.5rem); font-weight: 700; color: var(--accent-2); }
-.caret { display: inline-block; width: 2px; height: 1.1em; margin-left: 3px; vertical-align: -.15em; background: var(--accent); animation: blink 1s steps(1) infinite; }
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease var(--d,0ms), transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms); }
-.reveal.in { opacity: 1; transform: none; }
-.project-card { position: relative; will-change: transform; }
-.project-card:hover { transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-7px); }
-.project-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s ease; background: radial-gradient(260px circle at var(--mx,50%) var(--my,50%), color-mix(in srgb,var(--accent) 22%,transparent), transparent 70%); }
-.project-card:hover::after { opacity: 1; }
-.stats { display: flex; gap: 1rem; margin-top: 2rem; }
-.stats > div { flex: 1; padding: 1rem; text-align: center; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
-.stats strong { display: block; font-size: 2rem; font-weight: 850; letter-spacing: -.04em; color: var(--accent); }
-.stats span { color: var(--muted); font-size: .8rem; }
-.range-bar { display: flex; align-items: center; gap: .7rem; max-width: 360px; margin: 1rem auto 0; color: var(--muted); font-size: .8rem; font-weight: 700; }
-.range-track { position: relative; flex: 1; height: 8px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
-#rangeFill { position: absolute; top: 0; bottom: 0; border-radius: 99px; background: linear-gradient(90deg,var(--accent),var(--accent-2)); transition: left .35s ease, width .35s ease; }
-.ripple { position: fixed; z-index: 2001; width: 12px; height: 12px; border: 2px solid var(--accent-2); border-radius: 50%; pointer-events: none; transform: translate(-50%,-50%); animation: ripple .7s ease-out forwards; }
-.confetti { position: fixed; inset: 0; z-index: 3000; pointer-events: none; }
-@media (max-width: 575px) { .stats { flex-direction: column; } }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .particles { display: none; } }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="preloader" id="preloader"><span>FF<b>.</b></span></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-outline" aria-hidden="true"></div>
+  <div class="mouse-light" aria-hidden="true"></div>
 
-/* ================= EXTRAS 2 ================= */
-.btn-primary-custom { background: linear-gradient(110deg,var(--accent),color-mix(in srgb,var(--accent) 78%,#000)); }
-.preloader { position: fixed; inset: 0; z-index: 5000; display: grid; place-items: center; background: var(--bg); transition: opacity .5s ease, visibility .5s; }
-.preloader.done { opacity: 0; visibility: hidden; }
-.preloader span { font-size: 4rem; font-weight: 900; letter-spacing: -.08em; animation: pulse 1s ease-in-out infinite; }
-.preloader b { color: var(--accent); }
-@keyframes pulse { 50% { transform: scale(1.12); } }
-@keyframes marquee { to { transform: translateX(-50%); } }
-.mouse-light { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(520px circle at var(--lx,50%) var(--ly,30%), color-mix(in srgb,var(--accent) 11%,transparent), transparent 60%); }
-.accent-picker { display: flex; gap: .45rem; align-items: center; }
-.dot { width: 18px; height: 18px; padding: 0; border: 2px solid transparent; border-radius: 50%; background: var(--c); transition: transform .2s ease; }
-.dot:hover { transform: scale(1.25); }
-.dot.on { border-color: var(--text); }
-.marquee { overflow: hidden; padding: .9rem 0; border-bottom: 1px solid var(--line); background: var(--bg-soft); }
-.marquee-track { display: flex; gap: 2.2rem; width: max-content; padding-right: 2.2rem; animation: marquee 28s linear infinite; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee span { white-space: nowrap; font-weight: 800; letter-spacing: -.02em; color: var(--muted); }
-.marquee span::after { content: "✦"; margin-left: 2.2rem; color: var(--accent); }
-.chip { padding: .5rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: .85rem; font-weight: 650; transition: .2s ease; }
-.chip:hover { border-color: var(--accent); }
-.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.chip.ok { background: #16a34a; border-color: #16a34a; color: #fff; }
-.chip.bad { background: #dc2626; border-color: #dc2626; color: #fff; }
-.filters, .game-tabs { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
-.filters { margin: -1.5rem 0 2.2rem; }
-.game-tabs { margin-bottom: 1.5rem; }
-dialog { width: 100%; max-width: min(560px,92vw); padding: 0; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
-dialog::backdrop { background: rgba(8,12,22,.65); backdrop-filter: blur(6px); }
-dialog[open] { animation: fadeUp .3s ease both; }
-dialog[open], dialog[open] * { cursor: auto !important; }
-dialog[open] a, dialog[open] button, dialog[open] li { cursor: pointer !important; }
-.pm-img { height: 220px; background: var(--surface-2); }
-.pm-img img { width: 100%; height: 100%; object-fit: cover; }
-.pm-body { padding: 1.5rem; }
-.pm-body h3 { margin: .4rem 0; font-weight: 750; }
-.pm-body p { margin-bottom: 1.2rem; color: var(--muted); }
-.palette { margin-top: 12vh; }
-.palette input { width: 100%; padding: 1rem 1.2rem; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--text); outline: none; }
-.palette ul { max-height: 50vh; margin: 0; padding: .5rem; overflow: auto; list-style: none; }
-.palette li { padding: .7rem .9rem; border-radius: 10px; color: var(--muted); }
-.palette li.sel, .palette li:hover { background: color-mix(in srgb,var(--accent) 16%,transparent); color: var(--text); }
-.timeline { max-width: 620px; margin: 0 auto; padding: 0 0 0 2rem; list-style: none; border-left: 2px solid var(--line); }
-.timeline li { position: relative; padding-bottom: 2rem; }
-.timeline li::before { content: ""; position: absolute; left: calc(-2rem - 7px); top: .3rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 20%,transparent); }
-.timeline time { color: var(--accent-2); font-size: .8rem; font-weight: 800; letter-spacing: .12em; }
-.timeline h3 { margin: .2rem 0; font-size: 1.2rem; font-weight: 750; }
-.timeline p { margin: 0; color: var(--muted); }
-.skill-bars { display: grid; gap: .8rem; margin-top: 1.8rem; }
-.skill-bars > div { display: grid; grid-template-columns: 90px 1fr; align-items: center; gap: 1rem; font-size: .85rem; font-weight: 650; }
-.skill-bars i { position: relative; height: 8px; overflow: hidden; border-radius: 99px; background: var(--surface-2); }
-.skill-bars i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 0; border-radius: 99px; background: linear-gradient(90deg,var(--accent),var(--accent-2)); transition: width 1.2s cubic-bezier(.2,.7,.2,1) .2s; }
-.skill-bars.in i::after { width: var(--v); }
-.mem-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; margin: 1rem 0; }
-.mem-card { aspect-ratio: 1; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-2); font-size: 1.8rem; transition: background .3s ease, border-color .3s ease; }
-.mem-card span { opacity: 0; transition: opacity .2s ease; }
-.mem-card.up { background: var(--bg); border-color: var(--accent); }
-.mem-card.up span { opacity: 1; }
-.mem-card.ok { background: color-mix(in srgb,var(--accent-2) 18%,var(--bg)); border-color: var(--accent-2); }
-.snake-cv { max-width: 100%; touch-action: none; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
-.quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: 1rem 0; }
-.records { margin: 1.4rem 0 0; color: var(--muted); font-size: .82rem; }
-.toast-msg { position: fixed; left: 0; right: 0; bottom: 28px; z-index: 4000; width: max-content; max-width: 90vw; margin: auto; padding: .8rem 1.2rem; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 650; box-shadow: var(--shadow); animation: fadeUp .3s ease both; }
-@media (pointer:coarse) { .mouse-light { display: none; } }
-@media (max-width: 575px) { .quiz-opts { grid-template-columns: 1fr; } }
+  <nav class="navbar navbar-expand-xl fixed-top site-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#inicio">FF<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-/* ================= EXTRAS 3 ================= */
-:root[data-theme="retro"] { color-scheme: dark; --bg: #0a0014; --bg-soft: #12002a; --surface: #1a0636; --surface-2: #260a4a; --text: #f6ecff; --muted: #b99bd9; --line: rgba(255,43,214,.28); --accent: #ff2bd6; --accent-2: #00f0ff; --nav-bg: rgba(10,0,20,.85); --shadow: 0 0 32px rgba(255,43,214,.18); }
-:root[data-theme="retro"] body { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-:root[data-theme="retro"] h1, :root[data-theme="retro"] h2 { text-shadow: 0 0 18px color-mix(in srgb,var(--accent) 60%,transparent); }
-:root[data-theme="retro"] body::after { content: ""; position: fixed; inset: 0; z-index: 4900; pointer-events: none; background: repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px); }
-:root.hc { --text: #fff; --muted: #f0f0f0; --line: rgba(255,255,255,.45); }
-:root[data-theme="light"].hc { --text: #000; --muted: #1a1a1a; --line: rgba(0,0,0,.5); }
-.a11y { position: fixed; left: 18px; bottom: 22px; z-index: 20; display: flex; gap: .4rem; }
-.a11y .chip { box-shadow: var(--shadow); }
-.navbar-brand:hover { animation: glitch .45s steps(2) 1; }
-@keyframes glitch { 0% { text-shadow: 2px 0 var(--accent-2),-2px 0 var(--accent); } 30% { transform: translate(-2px,1px); } 60% { text-shadow: -2px 0 var(--accent-2),2px 0 var(--accent); transform: translate(2px,-1px); } 100% { text-shadow: none; transform: none; } }
-.trail { position: fixed; inset: 0; z-index: 1999; pointer-events: none; }
-.curtain { position: fixed; inset: 0; z-index: 4500; pointer-events: none; background: linear-gradient(120deg,var(--accent),var(--accent-2)); transform: translateY(100%); }
-.curtain.in { animation: curtain .8s cubic-bezier(.7,0,.3,1) both; }
-@keyframes curtain { 0% { transform: translateY(100%); } 45%, 55% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
-.cursor-outline::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; font-size: .72rem; font-weight: 800; color: var(--text); }
-.cursor-outline.cursor-view { width: 76px; height: 76px; background: color-mix(in srgb,var(--accent) 22%,transparent); }
-.clocks { display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 1rem; margin-bottom: 2rem; }
-.clock { padding: 1.1rem; text-align: center; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
-.clock b { display: block; color: var(--accent-2); font-size: .8rem; letter-spacing: .06em; }
-.clock time { display: block; margin: .3rem 0; font-size: 1.5rem; font-weight: 850; font-variant-numeric: tabular-nums; }
-.clock small { color: var(--muted); }
-.countdown { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-.countdown > div { min-width: 90px; padding: 1rem; text-align: center; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
-.countdown strong { display: block; color: var(--accent); font-size: 2rem; font-weight: 850; font-variant-numeric: tabular-nums; }
-.countdown span { color: var(--muted); font-size: .78rem; }
-.count-note { margin: .8rem 0 2.2rem; text-align: center; color: var(--muted); font-size: .85rem; }
-.map-card { padding: 1rem; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: var(--shadow); }
-.map-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; margin-bottom: .6rem; }
-.map-info { color: var(--muted); font-size: .9rem; }
-.map { position: relative; min-height: 120px; }
-.map svg { display: block; width: 100%; height: auto; }
-.sphere { fill: var(--bg); stroke: var(--line); }
-.country { fill: var(--surface-2); stroke: var(--bg); stroke-width: .5; transition: fill .15s ease; }
-.country.known { fill: color-mix(in srgb,var(--accent) 35%,var(--surface-2)); }
-.country:hover { fill: var(--accent); }
-.map-tip { position: absolute; z-index: 2; padding: .35rem .7rem; border-radius: 8px; background: var(--text); color: var(--bg); font-size: .8rem; font-weight: 650; white-space: nowrap; pointer-events: none; }
-.info-card { height: 100%; padding: 1.6rem; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); }
-.info-card i { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 1rem; border-radius: 14px; color: var(--accent); background: color-mix(in srgb,var(--accent) 13%,transparent); font-size: 1.3rem; }
-.info-card h3 { font-size: 1.15rem; font-weight: 750; }
-.info-card p { margin: 0; color: var(--muted); font-size: .95rem; line-height: 1.7; }
-.donate-panel { max-width: 760px; margin: 2.5rem auto 0; padding: 2rem; text-align: center; border: 1px solid color-mix(in srgb,var(--accent) 45%,var(--line)); border-radius: 24px; background: linear-gradient(145deg,var(--surface),var(--surface-2)); box-shadow: var(--shadow); }
-.donate-panel h3 { font-weight: 800; }
-.don-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .7rem; margin: .8rem 0 1.2rem; }
-.donate-note { margin: 1.2rem 0 0; color: var(--muted); font-size: .85rem; }
-.beat { display: inline-block; animation: beat 1.4s ease-in-out infinite; }
-@keyframes beat { 50% { transform: scale(1.25); } }
-.essay-list { display: grid; gap: 1rem; max-width: 760px; margin: 0 auto; }
-.essay { padding: 1.3rem 1.5rem; text-align: left; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); color: var(--text); transition: transform .2s ease, border-color .2s ease; }
-.essay:hover { transform: translateY(-3px); border-color: var(--accent); }
-.essay h3 { margin: .4rem 0 .2rem; font-size: 1.2rem; font-weight: 750; }
-.essay small, .essay-modal small { color: var(--muted); }
-.essay-modal { max-width: min(680px,94vw); }
-.essay-modal article { max-height: 80vh; padding: 1.8rem; overflow: auto; }
-.essay-modal p { color: var(--muted); line-height: 1.85; }
-.repo-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 1rem; }
-.repo { display: block; padding: 1.2rem; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); transition: transform .2s ease, border-color .2s ease; }
-.repo:hover { transform: translateY(-4px); border-color: var(--accent); }
-.repo b { display: block; margin-bottom: .3rem; }
-.repo p { margin: 0 0 .6rem; color: var(--muted); font-size: .88rem; }
-.repo small { color: var(--accent-2); font-weight: 700; }
-.term { max-width: 720px; margin: auto; padding: 1.2rem; border: 1px solid var(--line); border-radius: 16px; background: #0b0f1a; color: #d7e3ff; font: .9rem/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; box-shadow: var(--shadow); }
-.term-out { height: 260px; overflow: auto; white-space: pre-wrap; }
-.term-out .cmd { color: var(--accent-2); }
-.term-line { display: flex; gap: .5rem; margin-top: .5rem; }
-.term-line span { color: var(--accent-2); white-space: nowrap; }
-.term-line input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: inherit; font: inherit; }
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-2">
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#acerca-de-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#juego">Juegos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#solidaridad">Solidaridad</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-2 d-flex align-items-center gap-2 flex-wrap">
+            <span class="accent-picker" role="group" aria-label="Color de acento">
+              <button class="dot on" type="button" data-accent="" style="--c:#8b7cff" aria-label="Violeta"></button>
+              <button class="dot" type="button" data-accent="#22b573" style="--c:#22b573" aria-label="Verde"></button>
+              <button class="dot" type="button" data-accent="#f97316" style="--c:#f97316" aria-label="Naranja"></button>
+              <button class="dot" type="button" data-accent="#ec4899" style="--c:#ec4899" aria-label="Rosa"></button>
+            </span>
+            <button class="theme-toggle" id="langToggle" type="button" aria-label="Cambiar idioma">EN</button>
+            <button class="theme-toggle" id="openPalette" type="button" aria-label="Comandos (Ctrl+K)"><i class="bi bi-command"></i></button>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo claro" title="Cambiar tema">
+              <i class="bi bi-sun-fill" id="themeIcon" aria-hidden="true"></i>
+              <span class="theme-label">Modo claro</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-/* ================= EXTRAS 4 ================= */
-.globe-wrap { position: relative; width: min(340px,78vw); margin: 2.4rem auto 0; }
-.globe-wrap canvas { display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; cursor: grab; touch-action: pan-y; filter: drop-shadow(0 0 40px color-mix(in srgb,var(--accent) 35%,transparent)); }
-.globe-wrap canvas:active { cursor: grabbing; }
-.globe-label { min-height: 1.3rem; margin: .9rem 0 0; color: var(--muted); font-size: .85rem; }
-.globe-reset { position: absolute; top: 0; right: -10px; }
-.mascot-stage { position: relative; max-width: 760px; height: 150px; margin: 2rem auto 0; overflow: hidden; }
-.ground { position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 18px); }
-.condi { position: absolute; bottom: 6px; left: 10px; width: 84px; height: 84px; cursor: pointer; outline-offset: 4px; }
-.condi svg { width: 100%; height: 100%; overflow: visible; }
-.condi .wing { transform-origin: 44px 46px; }
-.condi .eye { animation: blink2 4s infinite; }
-.condi.walk svg { animation: bob .45s ease-in-out infinite; }
-.condi.walk .leg-a { animation: step .45s ease-in-out infinite; }
-.condi.walk .leg-b { animation: step .45s ease-in-out infinite reverse; }
-.condi.talk .wing { animation: wave .55s ease-in-out infinite; }
-.condi.cheer svg { animation: jump .55s ease-in-out 4; }
-.condi.cheer .wing { animation: wave .22s ease-in-out infinite; }
-@keyframes bob { 50% { transform: translateY(-3px); } }
-@keyframes step { 0%,100% { transform: rotate(-24deg); } 50% { transform: rotate(24deg); } }
-@keyframes wave { 50% { transform: rotate(-38deg); } }
-@keyframes jump { 40% { transform: translateY(-26px) rotate(-6deg); } }
-@keyframes blink2 { 0%,94%,100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
-.condi-bubble { position: absolute; top: 0; max-width: 230px; padding: .5rem .8rem; border-radius: 14px; background: var(--text); color: var(--bg); font-size: .82rem; font-weight: 650; line-height: 1.35; pointer-events: none; }
-.condi-bubble::after { content: ""; position: absolute; bottom: -6px; left: 48px; border: 6px solid transparent; border-top-color: var(--text); border-bottom: 0; }
-.un-card { max-width: 900px; margin: 0 auto; padding: 1.6rem; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); box-shadow: var(--shadow); }
-.un-desc { min-height: 1.6rem; text-align: center; color: var(--muted); }
-.un-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: .6rem; margin: 1.2rem 0; }
-.un-c { display: flex; flex-direction: column; align-items: center; gap: .1rem; padding: .7rem .3rem; border: 2px solid var(--line); border-radius: 14px; background: var(--surface-2); color: var(--text); transition: border-color .25s ease, background .25s ease; }
-.un-c .fl { font-size: 1.6rem; }
-.un-c b { font-size: .74rem; line-height: 1.2; text-align: center; }
-.un-c small { font-size: .62rem; font-weight: 800; color: var(--accent-2); }
-.un-c em { padding: .1rem .5rem; border-radius: 99px; background: var(--bg); font-size: .72rem; font-style: normal; font-weight: 800; }
-.un-c[data-v="y"] { border-color: #16a34a; background: color-mix(in srgb,#16a34a 16%,var(--surface-2)); }
-.un-c[data-v="n"] { border-color: #dc2626; background: color-mix(in srgb,#dc2626 16%,var(--surface-2)); }
-.un-c[data-v="a"] { border-color: var(--muted); }
-.un-c.pop { animation: pop .45s cubic-bezier(.3,1.6,.5,1); }
-.un-c.veto { animation: shake .5s; }
-.un-c.veto em::after { content: " 🛑"; }
-@keyframes pop { from { transform: scale(.7) rotateY(90deg); } to { transform: none; } }
-@keyframes shake { 20%,60% { transform: translateX(-5px); } 40%,80% { transform: translateX(5px); } }
-.un-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
-.un-tally { display: flex; gap: 1rem; font-weight: 800; }
-.un-tally .y { color: #16a34a; } .un-tally .n { color: #dc2626; } .un-tally .a { color: var(--muted); }
-.un-meter { position: relative; flex: 1; min-width: 180px; height: 12px; border-radius: 99px; background: var(--surface-2); }
-.un-meter i { display: block; width: 0; height: 100%; border-radius: 99px; background: var(--accent); transition: width .35s ease, background .3s ease; }
-.un-meter i.ok { background: #16a34a; }
-.un-meter::after { content: ""; position: absolute; left: 60%; top: -4px; bottom: -4px; width: 2px; background: var(--text); }
-.un-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; }
-.un-actions button:disabled { opacity: .5; }
-.un-result { margin: 1.2rem 0 0; padding: 1rem; border-radius: 14px; text-align: center; font-weight: 700; animation: fadeUp .4s ease both; }
-.un-result.ok { border: 1px solid #16a34a; background: color-mix(in srgb,#16a34a 18%,transparent); }
-.un-result.bad { border: 1px solid #dc2626; background: color-mix(in srgb,#dc2626 14%,transparent); }
-.un-rule { margin: 1rem 0 0; text-align: center; color: var(--muted); font-size: .82rem; }
-@media (max-width: 575px) { .un-grid { grid-template-columns: repeat(3,1fr); } }
+  <header id="inicio" class="hero-section">
+    <div class="hero-glow hero-glow-one"></div>
+    <div class="hero-glow hero-glow-two"></div>
+    <canvas id="particles" class="particles" aria-hidden="true"></canvas>
+    <div class="container hero-content text-center">
+      <div class="profile-frame">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Jiw9zpg5FwUN_3uqC6fsG9pbE2RpYDPCnNSay6wt2Q&s=10"
+          alt="Foto de perfil de Felipe" class="profile-image">
+      </div>
+      <p class="eyebrow" id="greeting">HOLA, SOY</p>
+      <h1>Felipe Ferrer <span>Barceló</span></h1>
+      <p class="typed-line"><span id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+      <p class="hero-description">Estudiante, creador digital y futuro estudiante de Ciencias Políticas y Relaciones Internacionales.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn btn-primary-custom">Ver mis proyectos <i class="bi bi-arrow-down-right"></i></a>
+        <a href="#contacto" class="btn btn-outline-custom">Contactarme</a>
+        <a href="cv-felipe-ferrer-barcelo.pdf" download class="btn btn-outline-custom"><i class="bi bi-download"></i> CV</a>
+      </div>
+      <div class="scroll-note"><span></span> DESLIZÁ PARA EXPLORAR</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>Responsive</span><span>Curiosidad</span></div></div>
+    <section id="portfolio" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">LO QUE ESTUVE HACIENDO</p>
+          <h2>Mis <span>proyectos</span></h2>
+          <p>Una selección de trabajos y prácticas que fui desarrollando mientras aprendo programación web.</p>
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="chip active" data-filter="all" data-en="All">Todos</button>
+          <button class="chip" data-filter="html">HTML · CSS</button>
+          <button class="chip" data-filter="bootstrap">Bootstrap</button>
+          <button class="chip" data-filter="js">JavaScript</button>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/app-boca-juniors/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgOC5eon4NFF7SPk3vKy12tG5jK6yHnLfDezwR0dePLQ&s=10" alt="Vista del proyecto Formulario" class="project-image" loading="lazy">
+                <span class="project-number">01</span>
+                <span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">HTML · CSS</span><h3>Formulario</h3><p>Un formulario web de práctica.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/landing-page/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7dz_X3SFmpYZ_mZsTjIAHOiztLh2EXI5Cf0jkDILojQ&s=10" alt="Vista del proyecto Landing Page" class="project-image" loading="lazy">
+                <span class="project-number">02</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">BOOTSTRAP</span><h3>Landing Page</h3><p>Una página de presentación adaptable.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/Desaf-o-Ecommerce-Store-Product-Gallery/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6kD_KUCblQeBj6FEvYNpwrGpUaywEncn4Av1EEvFpcQ&s=10" alt="Vista del proyecto Ecommerce Store Product Gallery" class="project-image" loading="lazy">
+                <span class="project-number">03</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">HTML · CSS · JS</span><h3>Ecommerce Product Gallery</h3><p>Galería de productos para una tienda online.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/lista-de-supermercado/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4tjGv9wVeeMzt80dPs_naiaMfj7Qy6bDiq2Ex1L68mA&s=10" alt="Vista del proyecto Lista de Supermercado" class="project-image" loading="lazy">
+                <span class="project-number">04</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">JAVASCRIPT</span><h3>Lista de Supermercado</h3><p>Una lista interactiva para organizar compras.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/Piedra-Papel-o-Tijera/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjBaIQ9FtiwvHM3gxm7W2rLJPKdqltzxQgiQm1wvWCEw&s=10" alt="Vista del proyecto Piedra, Papel o Tijera" class="project-image" loading="lazy">
+                <span class="project-number">05</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">JAVASCRIPT</span><h3>Piedra, Papel o Tijera</h3><p>Un clásico juego hecho con código.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/jubilaciones/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBOAFsdPuhFJCkbwW6Z327mR-SmU6aVIgFFV78Sy9jBQ&s=10" alt="Vista del proyecto ¿Puedo jubilarme?" class="project-image" loading="lazy">
+                <span class="project-number">06</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">LÓGICA · JS</span><h3>¿Puedo jubilarme?</h3><p>Una herramienta para explorar condiciones de jubilación.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/calculadora-de-abastecimiento-/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6cFAinW8IqiZue-k3d6lu6Tzvdx_ER2khLrAgoNnlQ&s=10" alt="Vista del proyecto Calculadora de Abastecimiento" class="project-image" loading="lazy">
+                <span class="project-number">07</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">JAVASCRIPT</span><h3>Calculadora de Abastecimiento</h3><p>Una calculadora para estimar necesidades de abastecimiento.</p></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="github" class="section-space" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="LIVE FROM GITHUB">EN VIVO DESDE GITHUB</p>
+          <h2>Más <span>repositorios</span></h2>
+        </div>
+        <div class="repo-grid" id="repoGrid"></div>
+      </div>
+    </section>
+
+    <section id="acerca-de-mi" class="about-section section-space">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <div class="about-card">
+              <span class="about-mark">FF.</span>
+              <p class="eyebrow">UN POCO SOBRE MÍ</p>
+              <h2>Aprender, crear<br>y <span>seguir creciendo.</span></h2>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <p class="about-copy">Soy estudiante del St Brendan's. Estoy aprendiendo HTML, CSS y Bootstrap para crear sitios responsive. Este portfolio es uno de mis primeros proyectos y voy a ir sumando los próximos trabajos que haga durante el año.</p>
+            <p class="about-copy">En 2027 empiezo la universidad y voy a estudiar Ciencias Políticas y Relaciones Internacionales. Me interesa combinar la tecnología, la creatividad y el análisis de la realidad.</p>
+            <div class="skill-list">
+              <span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>Curiosidad</span>
+            </div>
+            <div class="stats">
+              <div><strong data-count="7">0</strong><span>proyectos</span></div>
+              <div><strong data-count="4">0</strong><span>tecnologías</span></div>
+              <div><strong data-count="2027">0</strong><span>arranco la uni</span></div>
+            </div>
+            <div class="skill-bars">
+              <div><span>HTML</span><i style="--v:80%"></i></div>
+              <div><span>CSS</span><i style="--v:70%"></i></div>
+              <div><span>Bootstrap</span><i style="--v:65%"></i></div>
+              <div><span>JavaScript</span><i style="--v:55%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="camino" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="MY PATH">MI CAMINO</p>
+          <h2>Un paso <span>a la vez</span></h2>
+        </div>
+        <ol class="timeline">
+          <li><time data-en="NOW">AHORA</time><h3 data-en="Student at St Brendan's">Estudiante en St Brendan's</h3><p data-en="I'm learning HTML, CSS and Bootstrap to build responsive sites.">Aprendo HTML, CSS y Bootstrap para crear sitios responsive.</p></li>
+          <li><time>2026</time><h3 data-en="My first projects">Mis primeros proyectos</h3><p data-en="I build this portfolio and keep adding work throughout the year.">Armo este portfolio y voy sumando trabajos durante el año.</p></li>
+          <li><time>2027</time><h3 data-en="University begins">Arranca la universidad</h3><p data-en="Political Science and International Relations.">Ciencias Políticas y Relaciones Internacionales.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="mundo" class="section-space about-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="LOOKING AT THE WORLD">MIRANDO EL MUNDO</p>
+          <h2>Relojes, mapa y <span>cuenta regresiva</span></h2>
+          <p data-en="Because I'm into international relations: the time in key cities, a map to explore and the countdown to university.">Porque me interesan las relaciones internacionales: la hora en ciudades clave, un mapa para explorar y la cuenta regresiva a la universidad.</p>
+        </div>
+        <div class="clocks" id="clocks"></div>
+        <div class="countdown" id="countdown">
+          <div><strong>00</strong><span data-en="days">días</span></div>
+          <div><strong>00</strong><span data-en="hours">horas</span></div>
+          <div><strong>00</strong><span data-en="min">min</span></div>
+          <div><strong>00</strong><span data-en="sec">seg</span></div>
+        </div>
+        <p class="count-note" data-en="Until university starts (estimated date: March 1, 2027).">Hasta que empiece la universidad (fecha estimada: 1 de marzo de 2027).</p>
+        <div class="map-card">
+          <div class="map-bar">
+            <button class="chip" type="button" id="mapGame" data-en="Play: find the country">Jugar: ubicá el país</button>
+            <span class="map-info" id="mapInfo"></span>
+          </div>
+          <div class="map" id="map"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="onu" class="section-space about-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="DIPLOMACY GAME">JUEGO DE DIPLOMACIA</p>
+          <h2>Consejo de <span>Seguridad</span></h2>
+          <p data-en="You're the diplomat. Convince countries before the vote: spend your action points wisely and watch out for the veto!">Vos sos el diplomático. Convencé a los países antes de la votación: gastá bien tus puntos de acción y ¡cuidado con el veto!</p>
+        </div>
+        <div class="un-card">
+          <div class="game-tabs" id="unRes"></div>
+          <p class="un-desc" id="unDesc"></p>
+          <div class="un-hud">
+            <div class="un-ap" id="unAp" aria-label="Puntos de acción"></div>
+            <div class="un-tally"><span class="y">✔ <b id="unY">0</b></span><span class="n">✖ <b id="unN">0</b></span><span class="a">➖ <b id="unA">0</b></span></div>
+            <div class="un-meter"><i id="unMeter"></i></div>
+          </div>
+          <div class="un-grid" id="unGrid"></div>
+          <p class="un-hint" id="unHint"></p>
+          <div class="un-acts" id="unActs"></div>
+          <div class="un-log" id="unLog" aria-live="polite"></div>
+          <div class="un-actions" id="unActions">
+            <button class="btn btn-primary-custom" type="button" id="unVote" data-en="Go to the vote!">¡A votar!</button>
+            <button class="chip" type="button" id="unReset" data-en="New negotiation">Nueva negociación</button>
+          </div>
+          <p class="un-result" id="unResult" hidden></p>
+          <p class="un-rule" data-en="Each country shows its mood and how it would vote today. Spend your action points to turn the poll around: 9 votes in favor and no veto from the 🛡 members to pass.">Cada país muestra su ánimo y cómo votaría hoy. Gastá tus puntos de acción para dar vuelta la encuesta: se aprueba con 9 votos y sin veto de los 🛡.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="solidaridad" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="A SMALL, BIG GESTURE">UN PEQUEÑO GRAN GESTO</p>
+          <h2>Útiles para el <span>norte argentino</span></h2>
+          <p data-en="I want to bring school supplies to rural schools in the north of the country. Every notebook and every pencil counts.">Quiero llevar útiles escolares a escuelas rurales del norte del país. Cada cuaderno y cada lápiz cuentan.</p>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4"><div class="info-card"><i class="bi bi-geo-alt"></i><h3 data-en="The problem">El problema</h3><p data-en="Many rural schools in northern Argentina are far from everything and have very few resources. For a kid, having a notebook of their own can make a real difference.">Muchas escuelas rurales del norte argentino están lejos de todo y cuentan con muy pocos recursos. Para un chico, tener un cuaderno propio puede hacer una gran diferencia.</p></div></div>
+          <div class="col-md-4"><div class="info-card"><i class="bi bi-backpack2"></i><h3 data-en="What I'm collecting">Lo que busco juntar</h3><p data-en="Notebooks, pencils, pens, erasers, rulers, backpacks and reading books, new or in very good condition.">Cuadernos, lápices, lapiceras, gomas, reglas, mochilas y libros de lectura, nuevos o en muy buen estado.</p></div></div>
+          <div class="col-md-4"><div class="info-card"><i class="bi bi-journal-text"></i><h3 data-en="How it works">Cómo funciona</h3><p data-en="I gather the contributions, buy or receive the supplies and take them to the schools. Everything that comes through here, I'll report on this page.">Reúno los aportes, compro o recibo los útiles y los llevo hasta las escuelas. Todo lo que pase por acá lo voy a contar en esta página.</p></div></div>
+        </div>
+        <div class="mascot-stage" id="mascotStage">
+          <div class="ground"></div>
+          <div class="condi walk" id="condi" role="button" tabindex="0" aria-label="Condi, la mascota. Tocá para que te hable">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <path class="leg-a" style="transform-origin:42px 82px" d="M42 82v10m-5 0h10" stroke="#e9a23b" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path class="leg-b" style="transform-origin:56px 82px" d="M56 82v10m-5 0h10" stroke="#e9a23b" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M24 64l-16 12 20 3z" fill="#2d2a3e"/>
+        <ellipse cx="48" cy="58" rx="27" ry="26" fill="#2d2a3e"/>
+        <ellipse cx="55" cy="64" rx="14" ry="17" fill="#3f3b58"/>
+        <path d="M29 42q21 15 42 0q-4 13-21 13q-17 0-21-13z" fill="#fff"/>
+        <circle cx="52" cy="27" r="15" fill="#e07a5f"/>
+        <path d="M44 14q8-9 15 0z" fill="#c4553b"/>
+        <path d="M64 25l16 6-16 7z" fill="#f2cc8f"/>
+        <g class="eye" style="transform-origin:58px 24px"><circle cx="58" cy="24" r="4.4" fill="#fff"/><circle cx="59.2" cy="24.6" r="2.3" fill="#222"/></g>
+        <g class="wing"><path d="M44 46q-23 5-21 30q19-3 31-22z" fill="#1f1d2e"/><path d="M40 53q-10 4-11 15" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".75"/></g>
+      </svg>
+          </div>
+          <div class="condi-bubble" id="condiBubble" role="status" hidden></div>
+        </div>
+        <div class="donate-panel" id="donatePanel">
+          <h3 data-en="Join in">Sumate</h3>
+          <div id="donateMethods"></div>
+          <button class="btn btn-primary-custom" type="button" id="donateContact">Quiero ayudar <i class="bi bi-heart-fill beat"></i></button>
+          <p class="donate-note" data-en="I'll publish here what was bought and where each contribution ended up.">Voy a publicar acá qué se compró y a dónde llegó cada aporte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="columnas" class="section-space about-section" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="WRITING">ESCRITOS</p>
+          <h2>Columnas y <span>reflexiones</span></h2>
+        </div>
+        <div class="filters" id="essayFilters"></div>
+        <div class="essay-list" id="essayList"></div>
+      </div>
+    </section>
+
+    <section id="juego" class="section-space game-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">UN PEQUEÑO EXTRA</p>
+          <h2>Mini <span>juegos</span></h2>
+          <p>Elegí un juego, batí tu récord y mostrame de qué sos capaz.</p>
+        </div>
+        <div class="game-panel">
+          <div class="game-tabs">
+            <button class="chip active" type="button" data-pane="guess" data-en="Guess">Adivinar</button>
+            <button class="chip" type="button" data-pane="memory" data-en="Memory">Memoria</button>
+            <button class="chip" type="button" data-pane="snake">Snake</button>
+            <button class="chip" type="button" data-pane="quiz">Quiz</button>
+          </div>
+          <div class="pane" id="pane-guess">
+          <div class="game-icon"><i class="bi bi-dice-5"></i></div>
+          <p id="gameMessage" class="game-message" aria-live="polite">Elegí un número entre 1 y 20 para empezar.</p>
+          <form id="guessForm" class="guess-form">
+            <label class="visually-hidden" for="guessInput">Tu número</label>
+            <input id="guessInput" type="number" min="1" max="20" inputmode="numeric" placeholder="1 - 20" required>
+            <button class="btn btn-primary-custom" type="submit">Probar <i class="bi bi-arrow-right"></i></button>
+          </form>
+          <div class="range-bar" aria-label="Rango posible"><span id="rangeLow">1</span><div class="range-track"><div id="rangeFill"></div></div><span id="rangeHigh">20</span></div>
+          <p class="attempts mt-3">Intentos: <strong id="attemptCount">0</strong> · Récord: <strong id="bestScore">–</strong></p>
+          <button class="game-reset" id="resetGame" type="button"><i class="bi bi-arrow-clockwise"></i> Nuevo número</button>
+          </div>
+          <div class="pane" id="pane-memory" hidden>
+            <p class="game-message" data-en="Find all the pairs.">Encontrá todos los pares.</p>
+            <div class="mem-grid" id="memGrid"></div>
+            <p class="attempts"><span data-en="Moves:">Movimientos:</span> <strong id="memMoves">0</strong></p>
+            <button class="game-reset" id="memReset" type="button" data-en="New game">Nueva partida</button>
+          </div>
+          <div class="pane" id="pane-snake" hidden>
+            <p class="game-message" id="snakeInfo" data-en="Arrow keys or swipe. Press Start.">Flechas del teclado o deslizá. Tocá Empezar.</p>
+            <canvas id="snakeCv" class="snake-cv" width="300" height="300"></canvas>
+            <p class="attempts mt-3"><span data-en="Score:">Puntos:</span> <strong id="snakeScore">0</strong></p>
+            <button class="game-reset" id="snakeStart" type="button" data-en="Start">Empezar</button>
+          </div>
+          <div class="pane" id="pane-quiz" hidden>
+            <p class="game-message" id="quizQ"></p>
+            <div class="quiz-opts" id="quizOpts"></div>
+            <p class="attempts"><span data-en="Score:">Puntos:</span> <strong id="quizScore">0</strong>/8</p>
+            <button class="game-reset" id="quizReset" type="button" data-en="Restart">Reiniciar</button>
+          </div>
+          <p class="records" id="records"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terminal" class="section-space about-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="FOR THE CURIOUS">PARA CURIOSOS</p>
+          <h2>Mini <span>terminal</span></h2>
+          <p data-en="Type help to see the commands.">Escribí help para ver los comandos.</p>
+        </div>
+        <div class="term" id="term">
+          <div class="term-out" id="termOut" aria-live="polite"></div>
+          <form class="term-line" id="termForm"><span>felipe@portfolio:~$</span><input id="termIn" autocomplete="off" spellcheck="false" aria-label="Comando"></form>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section-space contact-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">¿CHARLAMOS?</p>
+          <h2>Contacto</h2>
+          <p>Si querés dejarme un mensaje, podés hacerlo desde este formulario.</p>
+        </div>
+        <div class="contact-panel">
+          <form action="https://submit-form.com/DeQ3Ldw2p" method="POST">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control custom-input" id="nombre" name="nombre" placeholder="Tu nombre" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control custom-input" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+              </div>
+              <div class="col-12">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control custom-input" id="mensaje" name="mensaje" rows="5" placeholder="Escribí tu mensaje..." required></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary-custom" type="submit">Enviar mensaje <i class="bi bi-send"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <a class="footer-brand" href="#inicio">Felipe Ferrer Barceló<span>.</span></a>
+      <div class="social-links">
+        <a href="https://www.instagram.com/paipferrer/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/pipeferrer3" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.linkedin.com/in/felipe-ferrer-barcel%C3%B3-23a2a2357/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <p class="footer-copy mb-0">© <span id="currentYear">2026</span> · Hecho con HTML, CSS y JavaScript.</p>
+    </div>
+  </footer>
+
+  <dialog id="projectModal" class="project-modal">
+    <div class="pm-img"><img alt=""></div>
+    <div class="pm-body">
+      <span class="project-type"></span><h3></h3><p></p>
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer" data-en="Open project">Abrir proyecto</a>
+        <button class="btn btn-outline-custom" type="button" data-close data-en="Close">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="palette" class="palette">
+    <input id="palInput" type="text" autocomplete="off" placeholder="Escribí un comando..." aria-label="Comandos">
+    <ul id="palList"></ul>
+  </dialog>
+
+  <dialog id="essayModal" class="essay-modal">
+    <article>
+      <span class="project-type" id="emTag"></span>
+      <h3 id="emTitle"></h3>
+      <small id="emMeta"></small>
+      <div id="emBody" class="mt-3"></div>
+      <button class="btn btn-outline-custom" type="button" data-close2 data-en="Close">Cerrar</button>
+    </article>
+  </dialog>
+  <div class="a11y" role="group" aria-label="Ajustes de lectura">
+    <button class="chip" type="button" id="fontMinus" aria-label="Achicar letra">A−</button>
+    <button class="chip" type="button" id="fontPlus" aria-label="Agrandar letra">A+</button>
+    <button class="chip" type="button" id="contrastBtn" aria-label="Alto contraste"><i class="bi bi-circle-half"></i></button>
+  </div>
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Volver arriba"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
