@@ -70,7 +70,7 @@ function startNewGame() {
   guessInput.value = "";
   guessInput.disabled = false;
   guessForm.querySelector("button").disabled = false;
-  guessInput.focus({ preventScroll: true });
+
 }
 guessForm.addEventListener("submit", (event) => {
   event.preventDefault();
