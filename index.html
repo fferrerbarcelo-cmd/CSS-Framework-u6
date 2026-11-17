@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio personal de Felipe Ferrer Barceló: proyectos web, aprendizaje y contacto.">
+  <meta name="theme-color" content="#101522">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Felipe Ferrer Barceló | Portfolio">
+  <meta property="og:description" content="Portfolio personal: proyectos web, aprendizaje, juegos y una iniciativa solidaria para escuelas rurales.">
+  <meta property="og:image" content="preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101522'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='28' font-weight='900' text-anchor='middle' fill='%238b7cff'%3EFF%3C/text%3E%3C/svg%3E">
+  <title>Felipe Ferrer Barceló | Portfolio</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="preloader" id="preloader"><span>FF<b>.</b></span></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-outline" aria-hidden="true"></div>
+  <div class="mouse-light" aria-hidden="true"></div>
+
+  <nav class="navbar navbar-expand-xl fixed-top site-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#inicio">FF<span>.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-2">
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#acerca-de-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#juego">Juegos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#solidaridad">Solidaridad</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-2 d-flex align-items-center gap-2 flex-wrap">
+            <span class="accent-picker" role="group" aria-label="Color de acento">
+              <button class="dot on" type="button" data-accent="" style="--c:#8b7cff" aria-label="Violeta"></button>
+              <button class="dot" type="button" data-accent="#22b573" style="--c:#22b573" aria-label="Verde"></button>
+              <button class="dot" type="button" data-accent="#f97316" style="--c:#f97316" aria-label="Naranja"></button>
+              <button class="dot" type="button" data-accent="#ec4899" style="--c:#ec4899" aria-label="Rosa"></button>
+            </span>
+            <button class="theme-toggle" id="langToggle" type="button" aria-label="Cambiar idioma">EN</button>
+            <button class="theme-toggle" id="openPalette" type="button" aria-label="Comandos (Ctrl+K)"><i class="bi bi-command"></i></button>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo claro" title="Cambiar tema">
+              <i class="bi bi-sun-fill" id="themeIcon" aria-hidden="true"></i>
+              <span class="theme-label">Modo claro</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header id="inicio" class="hero-section">
+    <div class="hero-glow hero-glow-one"></div>
+    <div class="hero-glow hero-glow-two"></div>
+    <canvas id="particles" class="particles" aria-hidden="true"></canvas>
+    <div class="container hero-content text-center">
+      <div class="profile-frame">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Jiw9zpg5FwUN_3uqC6fsG9pbE2RpYDPCnNSay6wt2Q&s=10"
+          alt="Foto de perfil de Felipe" class="profile-image">
+      </div>
+      <p class="eyebrow" id="greeting">HOLA, SOY</p>
+      <h1>Felipe Ferrer <span>Barceló</span></h1>
+      <p class="typed-line"><span id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+      <p class="hero-description">Estudiante, creador digital y futuro estudiante de Ciencias Políticas y Relaciones Internacionales.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn btn-primary-custom">Ver mis proyectos <i class="bi bi-arrow-down-right"></i></a>
+        <a href="#contacto" class="btn btn-outline-custom">Contactarme</a>
+        <a href="cv-felipe-ferrer-barcelo.pdf" download class="btn btn-outline-custom"><i class="bi bi-download"></i> CV</a>
+      </div>
+      <div class="scroll-note"><span></span> DESLIZÁ PARA EXPLORAR</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>Responsive</span><span>Curiosidad</span></div></div>
+    <section id="portfolio" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">LO QUE ESTUVE HACIENDO</p>
+          <h2>Mis <span>proyectos</span></h2>
+          <p>Una selección de trabajos y prácticas que fui desarrollando mientras aprendo programación web.</p>
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="chip active" data-filter="all" data-en="All">Todos</button>
+          <button class="chip" data-filter="html">HTML · CSS</button>
+          <button class="chip" data-filter="bootstrap">Bootstrap</button>
+          <button class="chip" data-filter="js">JavaScript</button>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/app-boca-juniors/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgOC5eon4NFF7SPk3vKy12tG5jK6yHnLfDezwR0dePLQ&s=10" alt="Vista del proyecto Formulario" class="project-image" loading="lazy">
+                <span class="project-number">01</span>
+                <span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">HTML · CSS</span><h3>Formulario</h3><p>Un formulario web de práctica.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/landing-page/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7dz_X3SFmpYZ_mZsTjIAHOiztLh2EXI5Cf0jkDILojQ&s=10" alt="Vista del proyecto Landing Page" class="project-image" loading="lazy">
+                <span class="project-number">02</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">BOOTSTRAP</span><h3>Landing Page</h3><p>Una página de presentación adaptable.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/Desaf-o-Ecommerce-Store-Product-Gallery/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6kD_KUCblQeBj6FEvYNpwrGpUaywEncn4Av1EEvFpcQ&s=10" alt="Vista del proyecto Ecommerce Store Product Gallery" class="project-image" loading="lazy">
+                <span class="project-number">03</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">HTML · CSS · JS</span><h3>Ecommerce Product Gallery</h3><p>Galería de productos para una tienda online.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/lista-de-supermercado/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4tjGv9wVeeMzt80dPs_naiaMfj7Qy6bDiq2Ex1L68mA&s=10" alt="Vista del proyecto Lista de Supermercado" class="project-image" loading="lazy">
+                <span class="project-number">04</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">JAVASCRIPT</span><h3>Lista de Supermercado</h3><p>Una lista interactiva para organizar compras.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/Piedra-Papel-o-Tijera/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjBaIQ9FtiwvHM3gxm7W2rLJPKdqltzxQgiQm1wvWCEw&s=10" alt="Vista del proyecto Piedra, Papel o Tijera" class="project-image" loading="lazy">
+                <span class="project-number">05</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">JAVASCRIPT</span><h3>Piedra, Papel o Tijera</h3><p>Un clásico juego hecho con código.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/jubilaciones/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBOAFsdPuhFJCkbwW6Z327mR-SmU6aVIgFFV78Sy9jBQ&s=10" alt="Vista del proyecto ¿Puedo jubilarme?" class="project-image" loading="lazy">
+                <span class="project-number">06</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">LÓGICA · JS</span><h3>¿Puedo jubilarme?</h3><p>Una herramienta para explorar condiciones de jubilación.</p></div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a class="project-card" href="https://fferrerbarcelo-cmd.github.io/calculadora-de-abastecimiento-/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image-wrap">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6cFAinW8IqiZue-k3d6lu6Tzvdx_ER2khLrAgoNnlQ&s=10" alt="Vista del proyecto Calculadora de Abastecimiento" class="project-image" loading="lazy">
+                <span class="project-number">07</span><span class="project-open"><i class="bi bi-arrow-up-right"></i></span>
+              </div>
+              <div class="project-info"><span class="project-type">JAVASCRIPT</span><h3>Calculadora de Abastecimiento</h3><p>Una calculadora para estimar necesidades de abastecimiento.</p></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="github" class="section-space" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="LIVE FROM GITHUB">EN VIVO DESDE GITHUB</p>
+          <h2>Más <span>repositorios</span></h2>
+        </div>
+        <div class="repo-grid" id="repoGrid"></div>
+      </div>
+    </section>
+
+    <section id="acerca-de-mi" class="about-section section-space">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <div class="about-card">
+              <span class="about-mark">FF.</span>
+              <p class="eyebrow">UN POCO SOBRE MÍ</p>
+              <h2>Aprender, crear<br>y <span>seguir creciendo.</span></h2>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <p class="about-copy">Soy estudiante del St Brendan's. Estoy aprendiendo HTML, CSS y Bootstrap para crear sitios responsive. Este portfolio es uno de mis primeros proyectos y voy a ir sumando los próximos trabajos que haga durante el año.</p>
+            <p class="about-copy">En 2027 empiezo la universidad y voy a estudiar Ciencias Políticas y Relaciones Internacionales. Me interesa combinar la tecnología, la creatividad y el análisis de la realidad.</p>
+            <div class="skill-list">
+              <span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>Curiosidad</span>
+            </div>
+            <div class="stats">
+              <div><strong data-count="7">0</strong><span>proyectos</span></div>
+              <div><strong data-count="4">0</strong><span>tecnologías</span></div>
+              <div><strong data-count="2027">0</strong><span>arranco la uni</span></div>
+            </div>
+            <div class="skill-bars">
+              <div><span>HTML</span><i style="--v:80%"></i></div>
+              <div><span>CSS</span><i style="--v:70%"></i></div>
+              <div><span>Bootstrap</span><i style="--v:65%"></i></div>
+              <div><span>JavaScript</span><i style="--v:55%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="camino" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="MY PATH">MI CAMINO</p>
+          <h2>Un paso <span>a la vez</span></h2>
+        </div>
+        <ol class="timeline">
+          <li><time data-en="NOW">AHORA</time><h3 data-en="Student at St Brendan's">Estudiante en St Brendan's</h3><p data-en="I'm learning HTML, CSS and Bootstrap to build responsive sites.">Aprendo HTML, CSS y Bootstrap para crear sitios responsive.</p></li>
+          <li><time>2026</time><h3 data-en="My first projects">Mis primeros proyectos</h3><p data-en="I build this portfolio and keep adding work throughout the year.">Armo este portfolio y voy sumando trabajos durante el año.</p></li>
+          <li><time>2027</time><h3 data-en="University begins">Arranca la universidad</h3><p data-en="Political Science and International Relations.">Ciencias Políticas y Relaciones Internacionales.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="mundo" class="section-space about-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="LOOKING AT THE WORLD">MIRANDO EL MUNDO</p>
+          <h2>Relojes, mapa y <span>cuenta regresiva</span></h2>
+          <p data-en="Because I'm into international relations: the time in key cities, a map to explore and the countdown to university.">Porque me interesan las relaciones internacionales: la hora en ciudades clave, un mapa para explorar y la cuenta regresiva a la universidad.</p>
+        </div>
+        <div class="clocks" id="clocks"></div>
+        <div class="countdown" id="countdown">
+          <div><strong>00</strong><span data-en="days">días</span></div>
+          <div><strong>00</strong><span data-en="hours">horas</span></div>
+          <div><strong>00</strong><span data-en="min">min</span></div>
+          <div><strong>00</strong><span data-en="sec">seg</span></div>
+        </div>
+        <p class="count-note" data-en="Until university starts (estimated date: March 1, 2027).">Hasta que empiece la universidad (fecha estimada: 1 de marzo de 2027).</p>
+        <div class="map-card">
+          <div class="map-bar">
+            <button class="chip" type="button" id="mapGame" data-en="Play: find the country">Jugar: ubicá el país</button>
+            <span class="map-info" id="mapInfo"></span>
+          </div>
+          <div class="map" id="map"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="onu" class="section-space about-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="DIPLOMACY GAME">JUEGO DE DIPLOMACIA</p>
+          <h2>Consejo de <span>Seguridad</span></h2>
+          <p data-en="You're the diplomat. Convince countries before the vote: spend your action points wisely and watch out for the veto!">Vos sos el diplomático. Convencé a los países antes de la votación: gastá bien tus puntos de acción y ¡cuidado con el veto!</p>
+        </div>
+        <div class="un-card">
+          <div class="game-tabs" id="unRes"></div>
+          <p class="un-desc" id="unDesc"></p>
+          <div class="un-hud">
+            <div class="un-ap" id="unAp" aria-label="Puntos de acción"></div>
+            <div class="un-tally"><span class="y">✔ <b id="unY">0</b></span><span class="n">✖ <b id="unN">0</b></span><span class="a">➖ <b id="unA">0</b></span></div>
+            <div class="un-meter"><i id="unMeter"></i></div>
+          </div>
+          <div class="un-grid" id="unGrid"></div>
+          <p class="un-hint" id="unHint"></p>
+          <div class="un-acts" id="unActs"></div>
+          <div class="un-log" id="unLog" aria-live="polite"></div>
+          <div class="un-actions" id="unActions">
+            <button class="btn btn-primary-custom" type="button" id="unVote" data-en="Go to the vote!">¡A votar!</button>
+            <button class="chip" type="button" id="unReset" data-en="New negotiation">Nueva negociación</button>
+          </div>
+          <p class="un-result" id="unResult" hidden></p>
+          <p class="un-rule" data-en="Each country shows its mood and how it would vote today. Spend your action points to turn the poll around: 9 votes in favor and no veto from the 🛡 members to pass.">Cada país muestra su ánimo y cómo votaría hoy. Gastá tus puntos de acción para dar vuelta la encuesta: se aprueba con 9 votos y sin veto de los 🛡.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="solidaridad" class="section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="A SMALL, BIG GESTURE">UN PEQUEÑO GRAN GESTO</p>
+          <h2>Útiles para el <span>norte argentino</span></h2>
+          <p data-en="I want to bring school supplies to rural schools in the north of the country. Every notebook and every pencil counts.">Quiero llevar útiles escolares a escuelas rurales del norte del país. Cada cuaderno y cada lápiz cuentan.</p>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4"><div class="info-card"><i class="bi bi-geo-alt"></i><h3 data-en="The problem">El problema</h3><p data-en="Many rural schools in northern Argentina are far from everything and have very few resources. For a kid, having a notebook of their own can make a real difference.">Muchas escuelas rurales del norte argentino están lejos de todo y cuentan con muy pocos recursos. Para un chico, tener un cuaderno propio puede hacer una gran diferencia.</p></div></div>
+          <div class="col-md-4"><div class="info-card"><i class="bi bi-backpack2"></i><h3 data-en="What I'm collecting">Lo que busco juntar</h3><p data-en="Notebooks, pencils, pens, erasers, rulers, backpacks and reading books, new or in very good condition.">Cuadernos, lápices, lapiceras, gomas, reglas, mochilas y libros de lectura, nuevos o en muy buen estado.</p></div></div>
+          <div class="col-md-4"><div class="info-card"><i class="bi bi-journal-text"></i><h3 data-en="How it works">Cómo funciona</h3><p data-en="I gather the contributions, buy or receive the supplies and take them to the schools. Everything that comes through here, I'll report on this page.">Reúno los aportes, compro o recibo los útiles y los llevo hasta las escuelas. Todo lo que pase por acá lo voy a contar en esta página.</p></div></div>
+        </div>
+        <div class="mascot-stage" id="mascotStage">
+          <div class="ground"></div>
+          <div class="condi walk" id="condi" role="button" tabindex="0" aria-label="Condi, la mascota. Tocá para que te hable">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <path class="leg-a" style="transform-origin:42px 82px" d="M42 82v10m-5 0h10" stroke="#e9a23b" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path class="leg-b" style="transform-origin:56px 82px" d="M56 82v10m-5 0h10" stroke="#e9a23b" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M24 64l-16 12 20 3z" fill="#2d2a3e"/>
+        <ellipse cx="48" cy="58" rx="27" ry="26" fill="#2d2a3e"/>
+        <ellipse cx="55" cy="64" rx="14" ry="17" fill="#3f3b58"/>
+        <path d="M29 42q21 15 42 0q-4 13-21 13q-17 0-21-13z" fill="#fff"/>
+        <circle cx="52" cy="27" r="15" fill="#e07a5f"/>
+        <path d="M44 14q8-9 15 0z" fill="#c4553b"/>
+        <path d="M64 25l16 6-16 7z" fill="#f2cc8f"/>
+        <g class="eye" style="transform-origin:58px 24px"><circle cx="58" cy="24" r="4.4" fill="#fff"/><circle cx="59.2" cy="24.6" r="2.3" fill="#222"/></g>
+        <g class="wing"><path d="M44 46q-23 5-21 30q19-3 31-22z" fill="#1f1d2e"/><path d="M40 53q-10 4-11 15" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".75"/></g>
+      </svg>
+          </div>
+          <div class="condi-bubble" id="condiBubble" role="status" hidden></div>
+        </div>
+        <div class="donate-panel" id="donatePanel">
+          <h3 data-en="Join in">Sumate</h3>
+          <div id="donateMethods"></div>
+          <button class="btn btn-primary-custom" type="button" id="donateContact">Quiero ayudar <i class="bi bi-heart-fill beat"></i></button>
+          <p class="donate-note" data-en="I'll publish here what was bought and where each contribution ended up.">Voy a publicar acá qué se compró y a dónde llegó cada aporte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="columnas" class="section-space about-section" hidden>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="WRITING">ESCRITOS</p>
+          <h2>Columnas y <span>reflexiones</span></h2>
+        </div>
+        <div class="filters" id="essayFilters"></div>
+        <div class="essay-list" id="essayList"></div>
+      </div>
+    </section>
+
+    <section id="juego" class="section-space game-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">UN PEQUEÑO EXTRA</p>
+          <h2>Mini <span>juegos</span></h2>
+          <p>Elegí un juego, batí tu récord y mostrame de qué sos capaz.</p>
+        </div>
+        <div class="game-panel">
+          <div class="game-tabs">
+            <button class="chip active" type="button" data-pane="guess" data-en="Guess">Adivinar</button>
+            <button class="chip" type="button" data-pane="memory" data-en="Memory">Memoria</button>
+            <button class="chip" type="button" data-pane="snake">Snake</button>
+            <button class="chip" type="button" data-pane="quiz">Quiz</button>
+          </div>
+          <div class="pane" id="pane-guess">
+          <div class="game-icon"><i class="bi bi-dice-5"></i></div>
+          <p id="gameMessage" class="game-message" aria-live="polite">Elegí un número entre 1 y 20 para empezar.</p>
+          <form id="guessForm" class="guess-form">
+            <label class="visually-hidden" for="guessInput">Tu número</label>
+            <input id="guessInput" type="number" min="1" max="20" inputmode="numeric" placeholder="1 - 20" required>
+            <button class="btn btn-primary-custom" type="submit">Probar <i class="bi bi-arrow-right"></i></button>
+          </form>
+          <div class="range-bar" aria-label="Rango posible"><span id="rangeLow">1</span><div class="range-track"><div id="rangeFill"></div></div><span id="rangeHigh">20</span></div>
+          <p class="attempts mt-3">Intentos: <strong id="attemptCount">0</strong> · Récord: <strong id="bestScore">–</strong></p>
+          <button class="game-reset" id="resetGame" type="button"><i class="bi bi-arrow-clockwise"></i> Nuevo número</button>
+          </div>
+          <div class="pane" id="pane-memory" hidden>
+            <p class="game-message" data-en="Find all the pairs.">Encontrá todos los pares.</p>
+            <div class="mem-grid" id="memGrid"></div>
+            <p class="attempts"><span data-en="Moves:">Movimientos:</span> <strong id="memMoves">0</strong></p>
+            <button class="game-reset" id="memReset" type="button" data-en="New game">Nueva partida</button>
+          </div>
+          <div class="pane" id="pane-snake" hidden>
+            <p class="game-message" id="snakeInfo" data-en="Arrow keys or swipe. Press Start.">Flechas del teclado o deslizá. Tocá Empezar.</p>
+            <canvas id="snakeCv" class="snake-cv" width="300" height="300"></canvas>
+            <p class="attempts mt-3"><span data-en="Score:">Puntos:</span> <strong id="snakeScore">0</strong></p>
+            <button class="game-reset" id="snakeStart" type="button" data-en="Start">Empezar</button>
+          </div>
+          <div class="pane" id="pane-quiz" hidden>
+            <p class="game-message" id="quizQ"></p>
+            <div class="quiz-opts" id="quizOpts"></div>
+            <p class="attempts"><span data-en="Score:">Puntos:</span> <strong id="quizScore">0</strong>/8</p>
+            <button class="game-reset" id="quizReset" type="button" data-en="Restart">Reiniciar</button>
+          </div>
+          <p class="records" id="records"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terminal" class="section-space about-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="FOR THE CURIOUS">PARA CURIOSOS</p>
+          <h2>Mini <span>terminal</span></h2>
+          <p data-en="Type help to see the commands.">Escribí help para ver los comandos.</p>
+        </div>
+        <div class="term" id="term">
+          <div class="term-out" id="termOut" aria-live="polite"></div>
+          <form class="term-line" id="termForm"><span>felipe@portfolio:~$</span><input id="termIn" autocomplete="off" spellcheck="false" aria-label="Comando"></form>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section-space contact-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">¿CHARLAMOS?</p>
+          <h2>Contacto</h2>
+          <p>Si querés dejarme un mensaje, podés hacerlo desde este formulario.</p>
+        </div>
+        <div class="contact-panel">
+          <form action="https://submit-form.com/DeQ3Ldw2p" method="POST">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control custom-input" id="nombre" name="nombre" placeholder="Tu nombre" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control custom-input" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+              </div>
+              <div class="col-12">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control custom-input" id="mensaje" name="mensaje" rows="5" placeholder="Escribí tu mensaje..." required></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary-custom" type="submit">Enviar mensaje <i class="bi bi-send"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <a class="footer-brand" href="#inicio">Felipe Ferrer Barceló<span>.</span></a>
+      <div class="social-links">
+        <a href="https://www.instagram.com/paipferrer/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/pipeferrer3" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.linkedin.com/in/felipe-ferrer-barcel%C3%B3-23a2a2357/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <p class="footer-copy mb-0">© <span id="currentYear">2026</span> · Hecho con HTML, CSS y JavaScript.</p>
+    </div>
+  </footer>
+
+  <dialog id="projectModal" class="project-modal">
+    <div class="pm-img"><img alt=""></div>
+    <div class="pm-body">
+      <span class="project-type"></span><h3></h3><p></p>
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-primary-custom" target="_blank" rel="noopener noreferrer" data-en="Open project">Abrir proyecto</a>
+        <button class="btn btn-outline-custom" type="button" data-close data-en="Close">Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+  <dialog id="palette" class="palette">
+    <input id="palInput" type="text" autocomplete="off" placeholder="Escribí un comando..." aria-label="Comandos">
+    <ul id="palList"></ul>
+  </dialog>
+
+  <dialog id="essayModal" class="essay-modal">
+    <article>
+      <span class="project-type" id="emTag"></span>
+      <h3 id="emTitle"></h3>
+      <small id="emMeta"></small>
+      <div id="emBody" class="mt-3"></div>
+      <button class="btn btn-outline-custom" type="button" data-close2 data-en="Close">Cerrar</button>
+    </article>
+  </dialog>
+  <div class="a11y" role="group" aria-label="Ajustes de lectura">
+    <button class="chip" type="button" id="fontMinus" aria-label="Achicar letra">A−</button>
+    <button class="chip" type="button" id="fontPlus" aria-label="Agrandar letra">A+</button>
+    <button class="chip" type="button" id="contrastBtn" aria-label="Alto contraste"><i class="bi bi-circle-half"></i></button>
+  </div>
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Volver arriba"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
