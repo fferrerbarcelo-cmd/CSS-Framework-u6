@@ -86,7 +86,7 @@ guessForm.addEventListener("submit", (event) => {
     gameMessage.textContent = `¡Exacto! Lo encontraste en ${attempts} ${attempts === 1 ? "intento" : "intentos"}. 🎉`;
     gameFinished = true;
     saveBest();
-    confetti();
+    gameWin();
     guessInput.disabled = true;
     guessForm.querySelector("button").disabled = true;
   } else if (guess < secretNumber) {
@@ -135,7 +135,7 @@ const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 const T = {
-  "Solidaridad": "Giving back", "Mundo": "World", "Modo neón": "Neon mode", "Relojes, mapa y": "Clocks, map and", "cuenta regresiva": "countdown",
+  "Consejo de": "Security", "Seguridad": "Council", "ONU": "UN", "Norte argentino": "Northern Argentina", "Solidaridad": "Giving back", "Mundo": "World", "Modo neón": "Neon mode", "Relojes, mapa y": "Clocks, map and", "cuenta regresiva": "countdown",
   "Útiles para el": "School supplies for the", "norte argentino": "northern Argentina", "Más": "More", "repositorios": "repositories", "Columnas y": "Columns and", "reflexiones": "reflections",
   "Bruselas": "Brussels", "Pekín": "Beijing", "Nueva York · ONU": "New York · UN", "Washington D. C.": "Washington, D.C.", "Ciudad de México": "Mexico City", "Berlín": "Berlin", "Moscú": "Moscow", "Nueva Delhi": "New Delhi",
   "Hacé click en": "Click on", "Puntos:": "Score:", "Ese es": "That's", "Pasá el mouse por un país.": "Hover over a country.", "No se pudo cargar el mapa.": "Couldn't load the map.", "Cargando mapa…": "Loading map…",
@@ -188,7 +188,7 @@ function applyLang() {
   for (let n; (n = w.nextNode());) if (n.nodeValue.trim() && !n.parentElement.closest("script,style")) trNode(n);
   $$("[placeholder]").forEach((el) => { el.dataset.es ??= el.placeholder; el.placeholder = lang === "en" ? (T[el.dataset.es] ?? el.dataset.es) : el.dataset.es; });
   $("#langToggle").textContent = lang === "en" ? "ES" : "EN";
-  showRecords(); quizRender(); renderDonate(); showMapInfo(); renderEssays();
+  showRecords(); quizRender(); renderDonate(); showMapInfo(); renderEssays(); unBuild(); globeLabelSet();
 }
 new MutationObserver((ms) => ms.forEach((m) => m.addedNodes.forEach((n) => { if (n.nodeType === 3 && lang === "en") trNode(n); }))).observe(document.body, { childList: true, subtree: true });
 
@@ -216,7 +216,7 @@ function countUp(box) {
     })(t0);
   });
 }
-const revealEls = $$(".section-heading, .row.g-4 > div, .about-card, .about-copy, .skill-list, .stats, .game-panel, .contact-panel, .timeline li, .skill-bars, .clock, .countdown, .map-card, .info-card, .donate-panel, .term");
+const revealEls = $$(".section-heading, .row.g-4 > div, .about-card, .about-copy, .skill-list, .stats, .game-panel, .contact-panel, .timeline li, .skill-bars, .clock, .countdown, .map-card, .info-card, .donate-panel, .term, .un-card");
 revealEls.forEach((el) => {
   el.classList.add("reveal");
   el.style.setProperty("--d", `${[...el.parentElement.children].indexOf(el) % 3 * 90}ms`);
@@ -434,7 +434,7 @@ $("[data-close]").addEventListener("click", () => pm.close());
 // Paleta de comandos (Ctrl/⌘ + K)
 const pal = $("#palette"), palIn = $("#palInput"), palList = $("#palList");
 const go = (h) => $(h).scrollIntoView({ behavior: "smooth" });
-const cmds = [["Portfolio", () => go("#portfolio")], ["Sobre mí", () => go("#acerca-de-mi")], ["Mi camino", () => go("#camino")], ["Juegos", () => go("#juego")], ["Mundo", () => go("#mundo")], ["Solidaridad", () => go("#solidaridad")], ["Terminal", () => { go("#terminal"); setTimeout(() => $("#termIn").focus({ preventScroll: true }), 700); }], ["Contacto", () => go("#contacto")], ["Cambiar tema", () => themeToggle.click()], ["Cambiar idioma", () => $("#langToggle").click()], ["Lanzar confeti", confetti]];
+const cmds = [["Portfolio", () => go("#portfolio")], ["Sobre mí", () => go("#acerca-de-mi")], ["Mi camino", () => go("#camino")], ["Juegos", () => go("#juego")], ["Mundo", () => go("#mundo")], ["ONU", () => go("#onu")], ["Solidaridad", () => go("#solidaridad")], ["Terminal", () => { go("#terminal"); setTimeout(() => $("#termIn").focus({ preventScroll: true }), 700); }], ["Contacto", () => go("#contacto")], ["Cambiar tema", () => themeToggle.click()], ["Cambiar idioma", () => $("#langToggle").click()], ["Lanzar confeti", confetti]];
 let palSel = 0;
 function palRender() {
   const q = palIn.value.toLowerCase(), list = cmds.filter((c) => tr(c[0]).toLowerCase().includes(q));
@@ -509,7 +509,7 @@ memGrid.addEventListener("click", (e) => {
   $("#memMoves").textContent = ++memMoves;
   if (memFirst.dataset.f === c.dataset.f) {
     memFirst.classList.add("ok"); c.classList.add("ok"); memFirst = null;
-    if (--memLeft === 0) { setRecord("memory", memMoves, true); confetti(); }
+    if (--memLeft === 0) { setRecord("memory", memMoves, true); gameWin(); }
   } else {
     memLock = true; const a = memFirst; memFirst = null;
     setTimeout(() => { a.classList.remove("up"); c.classList.remove("up"); memLock = false; }, 750);
@@ -584,7 +584,7 @@ $("#quizOpts").addEventListener("click", (e) => {
   $("#quizScore").textContent = quizScoreV;
   setTimeout(() => {
     qi++; quizLock = false; opts = [];
-    if (qi >= 8) { setRecord("quiz", quizScoreV); if (quizScoreV >= 6) confetti(); }
+    if (qi >= 8) { setRecord("quiz", quizScoreV); if (quizScoreV >= 6) gameWin(); }
     quizRender();
   }, 900);
 });
@@ -638,9 +638,7 @@ $("#mapGame").addEventListener("click", () => {
 async function initMap() {
   const box = $("#map");
   try {
-    await loadScript("https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js");
-    await loadScript("https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js");
-    const world = await (await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json")).json();
+    const world = await worldData();
     const feats = topojson.feature(world, world.objects.countries).features, W = 960, H = 500;
     const path = d3.geoPath(d3.geoNaturalEarth1().fitSize([W, H], { type: "Sphere" }));
     const svg = d3.select(box).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("role", "img").attr("aria-label", "Mapa del mundo");
@@ -812,5 +810,214 @@ $("#fontPlus").addEventListener("click", () => { fs = Math.min(140, fs + 10); ap
 $("#fontMinus").addEventListener("click", () => { fs = Math.max(80, fs - 10); applyRead(); });
 $("#contrastBtn").addEventListener("click", () => { hc = !hc; applyRead(); });
 applyRead();
+
+/* ================= EXTRAS 4 ================= */
+let worldP;
+const worldData = () => (worldP ??= (async () => {
+  await loadScript("https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js");
+  await loadScript("https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js");
+  return (await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json")).json();
+})().catch((error) => { worldP = null; throw error; }));
+function gameWin() { confetti(); mascotCheer(); }
+let globeLabelSet = () => {};
+
+// Globo 3D arrastrable
+const PINS = [
+  { name: "Buenos Aires", lat: -34.6, lon: -58.4, kind: "home" },
+  { name: "Norte argentino", lat: -25, lon: -63.5, kind: "north" }
+  // Cuando tengas escuelas confirmadas, sumalas: { name: "Escuela N° 123, Paraje X", lat: -24.5, lon: -64.2, kind: "north" },
+];
+async function initGlobe() {
+  const cv = $("#globe"), g = cv.getContext("2d"), wrap = $("#globeWrap"), lab = $("#globeLabel"), reset = $("#globeReset");
+  let world;
+  try { world = await worldData(); } catch (error) { wrap.hidden = true; return; }
+  const land = topojson.feature(world, world.objects.countries).features;
+  const proj = d3.geoOrthographic().rotate([58, 20]).clipAngle(90), path = d3.geoPath(proj, g), grat = d3.geoGraticule10();
+  let S = 0, R = 1, base = 0, k = 1, hover = null, hoverPin = null, drag = null, anim = null, focus = false, focused = null, spin = !reduceMotion;
+  const fit = () => { R = Math.min(devicePixelRatio || 1, 2); S = cv.clientWidth * R; cv.width = cv.height = S; base = S / 2 * .94; proj.translate([S / 2, S / 2]).scale(base * k); };
+  fit(); addEventListener("resize", fit);
+  const center = () => { const r = proj.rotate(); return [-r[0], -r[1]]; };
+  const pt = (e) => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * R, (e.clientY - r.top) * R]; };
+  function setLabel() {
+    const c = hover && WORLD[hover.properties.name];
+    lab.textContent = hoverPin ? (hoverPin.kind === "north" ? `💛 ${tr(hoverPin.name)} · ${L("destino de los útiles", "where the supplies go")}` : `📍 ${hoverPin.name}`)
+      : hover ? (c ? `${c[1]} ${wName(hover.properties.name)} · ${tr(c[2])}` : hover.properties.name)
+      : L("Arrastrá el globo · tocá un país", "Drag the globe · tap a country");
+  }
+  globeLabelSet = setLabel; setLabel();
+  function pick(e) {
+    const [x, y] = pt(e); hoverPin = null; hover = null;
+    for (const p of PINS) {
+      const c = proj([p.lon, p.lat]);
+      if (c && d3.geoDistance([p.lon, p.lat], center()) < Math.PI / 2 && Math.hypot(c[0] - x, c[1] - y) < 14 * R) { hoverPin = p; return; }
+    }
+    const ll = proj.invert([x, y]);
+    if (!ll || isNaN(ll[0]) || isNaN(ll[1])) return;
+    hover = land.find((f) => d3.geoContains(f, ll)) ?? null;
+  }
+  function zoomTo(ll, kk, what) {
+    const r0 = proj.rotate(), r1 = [-ll[0], -ll[1], 0];
+    while (r1[0] - r0[0] > 180) r1[0] -= 360;
+    while (r1[0] - r0[0] < -180) r1[0] += 360;
+    anim = { t0: performance.now(), ir: d3.interpolate(r0, r1), ik: d3.interpolate(k, kk) };
+    focus = kk > 1.05; focused = focus ? what : null; spin = false; reset.hidden = !focus;
+    if (!focus) setTimeout(() => { if (!focus && !drag && !reduceMotion) spin = true; }, 1600);
+  }
+  const zoomOut = () => zoomTo(center(), 1);
+  function onClick() {
+    const what = hoverPin || hover;
+    if (focus && (!what || what === focused)) return zoomOut();
+    if (hoverPin) zoomTo([hoverPin.lon, hoverPin.lat], 2.6, hoverPin);
+    else if (hover) zoomTo(d3.geoCentroid(hover), Math.max(1.5, Math.min(4, .7 / Math.sqrt(d3.geoArea(hover)))), hover);
+  }
+  cv.addEventListener("pointerdown", (e) => { drag = { x: e.clientX, y: e.clientY, moved: 0 }; cv.setPointerCapture(e.pointerId); spin = false; anim = null; });
+  cv.addEventListener("pointermove", (e) => {
+    if (drag) {
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y, r = proj.rotate(), f = .35 / k;
+      drag.x = e.clientX; drag.y = e.clientY; drag.moved += Math.abs(dx) + Math.abs(dy);
+      proj.rotate([r[0] + dx * f, Math.max(-80, Math.min(80, r[1] - dy * f)), r[2]]);
+    } else { pick(e); setLabel(); }
+  });
+  cv.addEventListener("pointerup", (e) => {
+    const was = drag; drag = null;
+    if (was && was.moved < 5) { pick(e); setLabel(); onClick(); }
+    else setTimeout(() => { if (!drag && !focus && !reduceMotion) spin = true; }, 2500);
+  });
+  cv.addEventListener("pointercancel", () => { drag = null; });
+  cv.addEventListener("pointerleave", () => { if (!drag) { hover = hoverPin = null; setLabel(); } });
+  reset.addEventListener("click", zoomOut);
+  function draw(t) {
+    const st = getComputedStyle(root), c = (v) => st.getPropertyValue(v).trim();
+    g.clearRect(0, 0, S, S);
+    g.beginPath(); path({ type: "Sphere" }); g.fillStyle = c("--surface"); g.fill();
+    g.beginPath(); path(grat); g.strokeStyle = c("--line"); g.lineWidth = R * .5; g.stroke();
+    land.forEach((f) => {
+      g.beginPath(); path(f); g.fillStyle = f === hover ? c("--accent") : c("--surface-2"); g.fill();
+      if (f !== hover && WORLD[f.properties.name]) { g.globalAlpha = .3; g.fillStyle = c("--accent"); g.fill(); g.globalAlpha = 1; }
+      g.strokeStyle = c("--bg"); g.lineWidth = R * .5; g.stroke();
+    });
+    g.beginPath(); path({ type: "Sphere" }); g.strokeStyle = c("--accent"); g.globalAlpha = .5; g.lineWidth = R * 1.5; g.stroke(); g.globalAlpha = 1;
+    const ctr = center();
+    PINS.forEach((p) => {
+      if (d3.geoDistance([p.lon, p.lat], ctr) > Math.PI / 2) return;
+      const [x, y] = proj([p.lon, p.lat]), pc = p.kind === "north" ? c("--accent") : c("--accent-2"), ph = (t % 1600) / 1600;
+      g.beginPath(); g.arc(x, y, (4 + ph * 14) * R, 0, 7); g.strokeStyle = pc; g.globalAlpha = 1 - ph; g.lineWidth = R * 1.5; g.stroke(); g.globalAlpha = 1;
+      g.beginPath(); g.arc(x, y, 4.5 * R, 0, 7); g.fillStyle = pc; g.fill(); g.strokeStyle = "#fff"; g.lineWidth = R; g.stroke();
+    });
+  }
+  (function frame(t) {
+    requestAnimationFrame(frame);
+    if (!heroVisible) return;
+    if (anim) {
+      const p = Math.min(1, (t - anim.t0) / 900), e = d3.easeCubicInOut(p);
+      k = anim.ik(e); proj.rotate(anim.ir(e)).scale(base * k);
+      if (p === 1) anim = null;
+    } else if (spin && !drag) { const r = proj.rotate(); proj.rotate([r[0] + .12, r[1], r[2]]); }
+    draw(t);
+  })(0);
+}
+initGlobe();
+
+// Mascota Condi (sección de donaciones)
+const stage = $("#mascotStage"), condi = $("#condi"), bub = $("#condiBubble"), mbtn = $("#donateContact");
+let cx = 10, cdir = 1, cst = "walk", cuntil = 0, nextStop = 0, mVisible = false, pointed = false, greeted = false, mlast = 0;
+const setC = (s) => { cst = s; condi.className = "condi " + s; };
+function placeBub() { bub.style.left = Math.max(0, Math.min(cx - 10, stage.clientWidth - bub.offsetWidth)) + "px"; }
+function say(msg, ms = 3200) {
+  bub.textContent = msg; bub.hidden = false; placeBub();
+  clearTimeout(say.t); say.t = setTimeout(() => { bub.hidden = true; }, ms);
+}
+function stopFor(state, ms, msg) { setC(state); cuntil = performance.now() + ms; if (msg) say(msg, ms); }
+const btnX = () => { const r = mbtn.getBoundingClientRect(), s = stage.getBoundingClientRect(); return r.left + r.width / 2 - s.left - 42; };
+function mascotCheer() {
+  if (mVisible) stopFor("cheer", 2400, L("¡Ganaste! 🎉 Me emociono. ¿Ayudás con los útiles?", "You won! 🎉 I'm so excited. Will you help with the supplies?"));
+  else toast(L("¡Condi te felicita! 🦅 Visitalo en Solidaridad.", "Condi says congrats! 🦅 Visit him in Giving back."));
+}
+(function mloop(t) {
+  requestAnimationFrame(mloop);
+  const dt = Math.min(50, t - mlast) / 1000; mlast = t;
+  if (!mVisible || reduceMotion) return;
+  const max = Math.max(0, stage.clientWidth - 84);
+  if (cst === "walk") {
+    cx += cdir * 48 * dt;
+    if (cx <= 0) { cx = 0; cdir = 1; } else if (cx >= max) { cx = max; cdir = -1; }
+    if (Math.abs(cx - btnX()) > 90) pointed = false;
+    if (!pointed && Math.abs(cx - btnX()) < 5) { pointed = true; stopFor("talk", 3600, L("¡Acá podés ayudar! 👇", "Here's where you can help! 👇")); }
+    else if (t > nextStop) stopFor("idle", 1600);
+  } else if (t > cuntil) { setC("walk"); nextStop = t + 4000 + Math.random() * 3000; }
+  condi.style.left = cx + "px"; condi.style.transform = cdir < 0 ? "scaleX(-1)" : "";
+  if (!bub.hidden) placeBub();
+})(0);
+new IntersectionObserver(([e]) => {
+  mVisible = e.isIntersecting;
+  if (mVisible) {
+    nextStop = performance.now() + 3000;
+    if (!greeted) { greeted = true; stopFor("talk", 3400, L("¡Hola! Soy Condi 🦅 Te acompaño por acá.", "Hi! I'm Condi 🦅 I'll keep you company here.")); }
+  }
+}, { threshold: .3 }).observe(stage);
+const facts = () => [L("Cada cuaderno cuenta 📓", "Every notebook counts 📓"), L("Tocá «Quiero ayudar» y escribile a Felipe 💛", "Tap “I want to help” and write to Felipe 💛"), L("El cóndor andino vuela sobre la cordillera. ¡Yo prefiero caminar! 😄", "The Andean condor soars over the Andes. I prefer walking! 😄"), L("Ganá un juego y me vas a ver festejar 🎉", "Win a game and you'll see me celebrate 🎉"), L("Compartí esta página con alguien 💌", "Share this page with someone 💌")];
+const condiTalk = () => { const f = facts(); stopFor("talk", 3000, f[Math.random() * f.length | 0]); };
+condi.addEventListener("click", condiTalk);
+condi.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); condiTalk(); } });
+
+// Simulador del Consejo de Seguridad (la composición cambia sola en 2027)
+const P5 = [["🇺🇸", "Estados Unidos", "United States", 1], ["🇬🇧", "Reino Unido", "United Kingdom", 1], ["🇫🇷", "Francia", "France", 1], ["🇷🇺", "Rusia", "Russia", 1], ["🇨🇳", "China", "China", 1]];
+const E_BOTH = [["🇧🇭", "Baréin", "Bahrain", 0], ["🇨🇴", "Colombia", "Colombia", 0], ["🇨🇩", "RD del Congo", "DR Congo", 0], ["🇱🇻", "Letonia", "Latvia", 0], ["🇱🇷", "Liberia", "Liberia", 0]];
+const E_2026 = [["🇩🇰", "Dinamarca", "Denmark", 0], ["🇬🇷", "Grecia", "Greece", 0], ["🇵🇰", "Pakistán", "Pakistan", 0], ["🇵🇦", "Panamá", "Panama", 0], ["🇸🇴", "Somalia", "Somalia", 0]];
+const E_2027 = [["🇦🇹", "Austria", "Austria", 0], ["🇰🇬", "Kirguistán", "Kyrgyzstan", 0], ["🇵🇹", "Portugal", "Portugal", 0], ["🇹🇹", "Trinidad y Tobago", "Trinidad and Tobago", 0], ["🇿🇼", "Zimbabue", "Zimbabwe", 0]];
+const UN = [...P5, ...(new Date().getFullYear() >= 2027 ? E_2027 : E_2026), ...E_BOTH];
+const UNR = [
+  [["Ayuda humanitaria", "Humanitarian aid"], ["Enviar ayuda humanitaria a una región golpeada por una crisis.", "Send humanitarian aid to a region hit by a crisis."]],
+  [["Misión de paz", "Peacekeeping mission"], ["Desplegar cascos azules para vigilar un alto el fuego.", "Deploy peacekeepers to monitor a ceasefire."]],
+  [["Sanciones", "Sanctions"], ["Imponer sanciones económicas a un gobierno que rompió un acuerdo.", "Impose economic sanctions on a government that broke an agreement."]]
+];
+const unGrid = $("#unGrid"), sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+let unVotes = UN.map(() => "a"), unRes = 0, unBusy = false;
+const vlabel = { y: () => L("Sí", "Yes"), n: () => "No", a: () => L("Abst.", "Abst.") };
+function unResult(text, kind) { const r = $("#unResult"); r.hidden = !text; r.textContent = text || ""; r.className = "un-result " + (kind || ""); }
+function unPaint(shown) {
+  let y = 0, n = 0, a = 0;
+  $$(".un-c", unGrid).forEach((el, i) => {
+    const on = i < shown, v = unVotes[i];
+    el.dataset.v = on ? v : ""; $("em", el).textContent = on ? vlabel[v]() : "?";
+    if (on) { if (v === "y") y++; else if (v === "n") n++; else a++; }
+  });
+  $("#unY").textContent = y; $("#unN").textContent = n; $("#unA").textContent = a;
+  $("#unMeter").style.width = (y / UN.length * 100) + "%"; $("#unMeter").classList.toggle("ok", y >= 9);
+}
+function unBuild() {
+  if (unBusy) return;
+  $("#unRes").innerHTML = UNR.map((r, i) => `<button class="chip${i === unRes ? " active" : ""}" type="button" data-r="${i}">${L(...r[0])}</button>`).join("");
+  $("#unDesc").textContent = L(...UNR[unRes][1]);
+  unGrid.innerHTML = UN.map((c, i) => `<button class="un-c" type="button" data-i="${i}"><span class="fl">${c[0]}</span><b>${L(c[1], c[2])}</b><small>${c[3] ? "🛡 Veto" : "&nbsp;"}</small><em></em></button>`).join("");
+  unPaint(UN.length);
+}
+unGrid.addEventListener("click", (e) => {
+  const c = e.target.closest(".un-c"); if (!c || unBusy) return;
+  const i = Number(c.dataset.i); unVotes[i] = { a: "y", y: "n", n: "a" }[unVotes[i]];
+  unResult(null); unPaint(UN.length);
+});
+$("#unRes").addEventListener("click", (e) => { const b = e.target.closest("[data-r]"); if (!b || unBusy) return; unRes = Number(b.dataset.r); unResult(null); unBuild(); });
+$("#unRand").addEventListener("click", () => { if (unBusy) return; unVotes = UN.map(() => { const r = Math.random(); return r < .5 ? "y" : r < .8 ? "n" : "a"; }); unResult(null); unPaint(UN.length); });
+$("#unReset").addEventListener("click", () => { if (unBusy) return; unVotes = UN.map(() => "a"); unResult(null); unBuild(); });
+$("#unVote").addEventListener("click", async () => {
+  if (unBusy) return;
+  unBusy = true; unResult(null);
+  const btns = $$("#unActions button"); btns.forEach((b) => { b.disabled = true; });
+  $$(".un-c", unGrid).forEach((el) => el.classList.remove("pop", "veto"));
+  unPaint(0);
+  for (let i = 0; i < UN.length; i++) {
+    await sleep(reduceMotion ? 0 : 380);
+    unPaint(i + 1);
+    const el = $$(".un-c", unGrid)[i]; el.classList.add("pop");
+    if (UN[i][3] && unVotes[i] === "n") el.classList.add("veto");
+  }
+  await sleep(reduceMotion ? 0 : 500);
+  const y = unVotes.filter((v) => v === "y").length, vet = UN.filter((c, i) => c[3] && unVotes[i] === "n").map((c) => L(c[1], c[2]));
+  if (y >= 9 && !vet.length) { unResult(L(`✅ ¡Resolución aprobada! ${y} votos a favor y ningún veto.`, `✅ Resolution adopted! ${y} votes in favor and no veto.`), "ok"); gameWin(); }
+  else if (y >= 9) unResult(L(`🛑 ¡Vetada! Llegó a ${y} votos, pero hubo veto de: ${vet.join(", ")}.`, `🛑 Vetoed! It reached ${y} votes, but it was vetoed by: ${vet.join(", ")}.`), "bad");
+  else unResult(L(`❌ No alcanzó los 9 votos necesarios (tuvo ${y}).`, `❌ It didn't reach the 9 votes needed (it got ${y}).`), "bad");
+  unBusy = false; btns.forEach((b) => { b.disabled = false; });
+});
 
 applyLang();
