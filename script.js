@@ -1,4 +1,4 @@
-// Tema oscuro/claro
+//Tema oscuro/claro
 const root = document.documentElement;
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
